@@ -18,8 +18,8 @@ NTUPLEDIR   = "/lustre/cmswork/zucchett/Ntuple/v1/"
 
 def project(s, pd, var, cut):
 
-    hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('log' if variable[var]['log'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
-    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title'], len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
+    hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
+    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title']+";Events;"+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
     hist.Sumw2()
     
     nfiles = 0
@@ -46,8 +46,8 @@ def project(s, pd, var, cut):
 
 def projectLoop(s, pd, var, cut, verbose=True):
 
-    hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('log' if variable[var]['log'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
-    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title'], len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
+    hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
+    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
     hist.Sumw2()
     hist.SetDirectory(0)
     
@@ -77,8 +77,8 @@ def projectLoop(s, pd, var, cut, verbose=True):
 
 def parallelProject(queue, s, ss, var, cut, verbose=True):
 
-    hist = TH1F(ss, ";"+variable[var]['title']+";Events;"+('log' if variable[var]['log'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
-    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title'], len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
+    hist = TH1F(ss, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
+    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
     hist.Sumw2()
     hist.SetOption(s)
     hist.SetDirectory(0)

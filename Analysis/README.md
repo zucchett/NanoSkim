@@ -10,7 +10,7 @@ Before plotting, few configuration files have to be up-to-date with the latest d
    
 ## Projecting from Tree
 
-This method uses the TTree:Project method invoked by the `plot.py` macro. It's sufficient to specify the variable (that has to be defined in =variables.py=) with the `-v` option, and the short category name (defined in =aliases.py=) with the `-c` option. For example:
+This method uses the TTree:Project method invoked by the `plot.py` macro. It's sufficient to specify the variable (that has to be defined in `variables.py`) with the `-v` option, and the short category name (defined in `aliases.py`) with the `-c` option. For example:
 ```
 python plot.py -v Z_mass -c Z2mCR
 ```

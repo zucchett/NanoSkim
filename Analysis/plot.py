@@ -49,8 +49,7 @@ FILE        = options.filename if len(options.filename) > 0 else None
 
 ########## SAMPLES ##########
 data = ["data_obs"]
-back = ["VV", "TTbar", "DYJetsToLL"]
-#back = ["VV", "ST", "TTbarSL", "WJetsToLNu_HT", "DYJetsToNuNu_HT", "DYJetsToLL_HT"] #, "QCD"]
+back = ["Higgs", "WmWm", "WpWp", "VVV", "ZZ", "WZ", "WW", "TTTT", "TTZ", "TTW", "ST", "TTbar", "VGamma", "WJetsToLNu", "DYJetsToLL", "QCD"]
 sign = []
 ########## ######## ##########
 
@@ -143,7 +142,7 @@ def plot(var, cut, norm=False, nm1=False):
         for i, s in enumerate(sign):
             if sample[s]['plot']: leg.AddEntry(hist[s], sample[s]['label'], "fl")
         
-    leg.SetY1(0.9-leg.GetNRows()*0.05)
+    leg.SetY1(0.9-leg.GetNRows()*0.04)
     
     
     # --- Display ---
@@ -158,8 +157,9 @@ def plot(var, cut, norm=False, nm1=False):
     c1.GetPad(bool(RATIO)).SetRightMargin(0.05)
     c1.GetPad(bool(RATIO)).SetTicks(1, 1)
     
-    log = "log" in hist['BkgSum'].GetZaxis().GetTitle()
-    if log: c1.GetPad(bool(RATIO)).SetLogy()
+    logX, logY = "logx" in hist['BkgSum'].GetZaxis().GetTitle(), "logy" in hist['BkgSum'].GetZaxis().GetTitle()
+    if logY: c1.GetPad(bool(RATIO)).SetLogy()
+    if logX: c1.GetPad(bool(RATIO)).SetLogx()
         
     # Draw
     bkg.Draw("HIST") # stack
@@ -167,21 +167,21 @@ def plot(var, cut, norm=False, nm1=False):
     if not isBlind and len(data) > 0: hist['data_obs'].Draw("SAME, PE") # data
     #data_graph.Draw("SAME, PE")
 #    if showSignal:
-#        smagn = 1. #if treeRead else 1.e2 #if log else 1.e2
+#        smagn = 1. #if treeRead else 1.e2 #if logY else 1.e2
 #        for i, s in enumerate(sign):
 #    #        if sample[s]['plot']:
 #                hist[s].Scale(smagn)
 #                hist[s].Draw("SAME, HIST") # signals Normalized, hist[s].Integral()*sample[s]['weight']
 #        #textS = drawText(0.80, 0.9-leg.GetNRows()*0.05 - 0.02, stype+" (x%d)" % smagn, True)
     bkg.GetYaxis().SetTitleOffset(bkg.GetYaxis().GetTitleOffset()*1.075)
-    bkg.SetMaximum((5. if log else 1.25)*max(bkg.GetMaximum(), hist['data_obs'].GetBinContent(hist['data_obs'].GetMaximumBin())+hist['data_obs'].GetBinError(hist['data_obs'].GetMaximumBin())))
+    bkg.SetMaximum((5. if logY else 1.25)*max(bkg.GetMaximum(), hist['data_obs'].GetBinContent(hist['data_obs'].GetMaximumBin())+hist['data_obs'].GetBinError(hist['data_obs'].GetMaximumBin())))
     #if bkg.GetMaximum() < max(hist[sign[0]].GetMaximum(), hist[sign[-1]].GetMaximum()): bkg.SetMaximum(max(hist[sign[0]].GetMaximum(), hist[sign[-1]].GetMaximum())*1.25)
-    bkg.SetMinimum(max(min(hist['BkgSum'].GetBinContent(hist['BkgSum'].GetMinimumBin()), hist['data_obs'].GetMinimum()), 5.e-1)  if log else 0.)
-    if log:
+    bkg.SetMinimum(max(min(hist['BkgSum'].GetBinContent(hist['BkgSum'].GetMinimumBin()), hist['data_obs'].GetMinimum()), 5.e-1)  if logY else 0.)
+    if logY:
         bkg.GetYaxis().SetNoExponent(bkg.GetMaximum() < 1.e4)
         bkg.GetYaxis().SetMoreLogLabels(True)
     
-    #if log: bkg.SetMinimum(1)
+    #if logY: bkg.SetMinimum(1)
     leg.Draw()
     drawCMS(LUMI, "Preliminary")
     if channel in aliasNames: drawRegion(aliasNames[channel], False)
@@ -196,6 +196,7 @@ def plot(var, cut, norm=False, nm1=False):
        
     if RATIO:
         c1.cd(2)
+        if logX: c1.GetPad(2).SetLogx()
         err = hist['BkgSum'].Clone("BkgErr;")
         err.SetTitle("")
         err.GetYaxis().SetTitle("Data / Bkg")

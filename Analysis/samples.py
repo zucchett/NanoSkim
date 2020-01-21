@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+
 sample = {
     'data_obs' : {
         'files' : [
@@ -50,12 +51,12 @@ sample = {
     },
     'VGamma' : {
         'files' : ['WGToLNuG_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'ZGTo2LG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_RunIISummer16'],
-        'fillcolor' : 881,
+        'fillcolor' : 835,
         'fillstyle' : 1001,
-        'linecolor' : 882,
+        'linecolor' : 835,
         'linewidth' : 2,
         'linestyle' : 1,
-        'label' : "V + #gamma",
+        'label' : "V#gamma + jets",
         'weight': 1.,
         'plot': True,
     },
@@ -70,22 +71,33 @@ sample = {
         'weight': 1.,
         'plot': True,
     },
-    'TTV' : {
-        'files' : ['TTWJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8_RunIISummer16', 'TTZToLLNuNu_M-10_TuneCUETP8M1_13TeV-amcatnlo-pythia8_RunIISummer16'],
-        'fillcolor' : 798,
+    'TTW' : {
+        'files' : ['TTWJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-madspin-pythia8_RunIISummer16'],
+        'fillcolor' : 901,
         'fillstyle' : 1001,
-        'linecolor' : 798,
+        'linecolor' : 901,
         'linewidth' : 2,
         'linestyle' : 1,
-        'label' : "t#bar{t}+V",#, single t
+        'label' : "t#bar{t}+W",#, single t
+        'weight': 1.,
+        'plot': True,
+    },
+    'TTZ' : {
+        'files' : ['TTZToLLNuNu_M-10_TuneCUETP8M1_13TeV-amcatnlo-pythia8_RunIISummer16'],
+        'fillcolor' : 902,
+        'fillstyle' : 1001,
+        'linecolor' : 902,
+        'linewidth' : 2,
+        'linestyle' : 1,
+        'label' : "t#bar{t}+Z",#, single t
         'weight': 1.,
         'plot': True,
     },
     'TTTT' : {
         'files' : ['TTTT_TuneCUETP8M2T4_13TeV-amcatnlo-pythia8_RunIISummer16'],
-        'fillcolor' : 798,
+        'fillcolor' : 799,
         'fillstyle' : 1001,
-        'linecolor' : 798,
+        'linecolor' : 799,
         'linewidth' : 2,
         'linestyle' : 1,
         'label' : "t#bar{t}t#bar{t}",#, single t
@@ -103,25 +115,58 @@ sample = {
         'weight': 1.,
         'plot': True,
     },
-    'VV' : {
-        'files' : ['WWTo2L2Nu_13TeV-powheg_RunIISummer16', 'WWTo2L2Nu_DoubleScattering_13TeV-pythia8_RunIISummer16', 'WZTo1L1Nu2Q_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16', 'WZTo2L2Q_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16', 'WZTo3LNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_RunIISummer16', 'ZZTo2L2Q_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16', 'ZZTo4L_13TeV-amcatnloFXFX-pythia8_RunIISummer16', 'ZZTo4L_DoubleScattering_13TeV-pythia8_RunIISummer16', 'ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8_RunIISummer16', 'ttHTobb_M125_13TeV_powheg_pythia8_RunIISummer16'],
-        'fillcolor' : 602,
+    'WW' : {
+        'files' : ['WWTo2L2Nu_13TeV-powheg_RunIISummer16', 'WWTo2L2Nu_DoubleScattering_13TeV-pythia8_RunIISummer16'],
+        'fillcolor' : 860-4,
         'fillstyle' : 1001,
-        'linecolor' : 602,
+        'linecolor' : 860-4,
         'linewidth' : 2,
         'linestyle' : 1,
-        'label' : "V^{+}V^{-}",
+        'label' : "WW",
         'weight': 1.,
         'plot': True,
     },
-    'VVss' : {
-        'files' : ['WmWmJJ_EWK_TuneCUETP8M1_13TeV-powheg-pythia8_RunIISummer16', 'WpWpJJ_EWK-QCD_TuneCUETP8M1_13TeV-madgraph-pythia8_RunIISummer16'],
-        'fillcolor' : 602,
+    'WZ' : {
+        'files' : ['WZTo1L1Nu2Q_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16', 'WZTo2L2Q_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16', 'WZTo3LNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_RunIISummer16'],
+        'fillcolor' : 860-2,
         'fillstyle' : 1001,
-        'linecolor' : 602,
+        'linecolor' : 860-2,
         'linewidth' : 2,
         'linestyle' : 1,
-        'label' : "V^{#pm}V^{#pm}",
+        'label' : "WZ",
+        'weight': 1.,
+        'plot': True,
+    },
+    'ZZ' : {
+        'files' : ['ZZTo2L2Q_13TeV_amcatnloFXFX_madspin_pythia8_RunIISummer16', 'ZZTo4L_13TeV-amcatnloFXFX-pythia8_RunIISummer16', 'ZZTo4L_DoubleScattering_13TeV-pythia8_RunIISummer16'],
+        'fillcolor' : 860-1,
+        'fillstyle' : 1001,
+        'linecolor' : 860-1,
+        'linewidth' : 2,
+        'linestyle' : 1,
+        'label' : "ZZ",
+        'weight': 1.,
+        'plot': True,
+    },
+    'WmWm' : {
+        'files' : ['WmWmJJ_EWK_TuneCUETP8M1_13TeV-powheg-pythia8_RunIISummer16'],
+        'fillcolor' : 910,
+        'fillstyle' : 1001,
+        'linecolor' : 910,
+        'linewidth' : 2,
+        'linestyle' : 1,
+        'label' : "W^{-}W^{-}",
+        'weight': 1.,
+        'plot': True,
+    },
+    'WpWp' : {
+        'files' : ['WpWpJJ_EWK-QCD_TuneCUETP8M1_13TeV-madgraph-pythia8_RunIISummer16'],
+        'fillcolor' : 909,
+        'fillstyle' : 1001,
+        'linecolor' : 909,
+        'linewidth' : 2,
+        'linestyle' : 1,
+        'label' : "W^{+}W^{+}",
         'weight': 1.,
         'plot': True,
     },
@@ -137,7 +182,7 @@ sample = {
         'plot': True,
     },
     'Higgs' : {
-        'files' : ['GluGluHToBB_M125_13TeV_powheg_pythia8_RunIISummer16', 'GluGluHToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8_RunIISummer16', 'HWminusJ_HToWW_M125_13TeV_powheg_pythia8_RunIISummer16', 'HWplusJ_HToWW_M125_13TeV_powheg_pythia8_RunIISummer16', 'WminusHToTauTau_M125_13TeV_powheg_pythia8_RunIISummer16', 'WminusH_HToBB_WToLNu_M125_13TeV_powheg_pythia8_RunIISummer16', 'WplusHToTauTau_M125_13TeV_powheg_pythia8_RunIISummer16', 'WplusH_HToBB_WToLNu_M125_13TeV_powheg_pythia8_RunIISummer16', 'ZHToTauTau_M125_13TeV_powheg_pythia8_RunIISummer16', 'ZH_HToBB_ZToLL_M125_13TeV_powheg_pythia8_RunIISummer16', 'ZH_HToBB_ZToNuNu_M125_13TeV_powheg_pythia8_RunIISummer16'],
+        'files' : ['GluGluHToBB_M125_13TeV_powheg_pythia8_RunIISummer16', 'GluGluHToZZTo4L_M125_13TeV_powheg2_JHUgenV6_pythia8_RunIISummer16', 'HWminusJ_HToWW_M125_13TeV_powheg_pythia8_RunIISummer16', 'HWplusJ_HToWW_M125_13TeV_powheg_pythia8_RunIISummer16', 'WminusHToTauTau_M125_13TeV_powheg_pythia8_RunIISummer16', 'WminusH_HToBB_WToLNu_M125_13TeV_powheg_pythia8_RunIISummer16', 'WplusHToTauTau_M125_13TeV_powheg_pythia8_RunIISummer16', 'WplusH_HToBB_WToLNu_M125_13TeV_powheg_pythia8_RunIISummer16', 'ZHToTauTau_M125_13TeV_powheg_pythia8_RunIISummer16', 'ZH_HToBB_ZToLL_M125_13TeV_powheg_pythia8_RunIISummer16', 'ZH_HToBB_ZToNuNu_M125_13TeV_powheg_pythia8_RunIISummer16', 'ttHToNonbb_M125_TuneCP5_13TeV-powheg-pythia8_RunIISummer16', 'ttHTobb_M125_13TeV_powheg_pythia8_RunIISummer16'],
         'fillcolor' : 628,
         'fillstyle' : 1001,
         'linecolor' : 629,

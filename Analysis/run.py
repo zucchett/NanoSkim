@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import os, multiprocessing, math
+import os, multiprocessing, math, datetime
 from array import array
 from ROOT import TFile, TH1, TF1, TLorentzVector, TObject
 
@@ -37,8 +37,8 @@ def run(s, ss, filename):
         hist[c] = {}
         for v in variables:
             hist[c][v] = {}
-            hist[c][v] = TH1F(c + "_" + v + "_" + s + "_" + filename, ";"+variable[v]['title']+";Events;"+('log' if variable[v]['log'] else ''), variable[v]['nbins'], variable[v]['min'], variable[v]['max'])
-            if variable[v]['nbins'] <= 0: hist[c][v] = TH1F(s, ";"+variable[v]['title'], len(variable[v]['bins'])-1, array('f', variable[v]['bins']))
+            hist[c][v] = TH1F(c + "_" + v + "_" + s + "_" + filename, ";"+variable[v]['title']+";Events;"+('logx' if variable[v]['logx'] else '')+('logy' if variable[v]['logy'] else ''), variable[v]['nbins'], variable[v]['min'], variable[v]['max'])
+            if variable[v]['nbins'] <= 0: hist[c][v] = TH1F(s, ";"+variable[v]['title']+";Events;"+('logx' if variable[v]['logx'] else '')+('logy' if variable[v]['logy'] else ''), len(variable[v]['bins'])-1, array('f', variable[v]['bins']))
             hist[c][v].Sumw2()
             hist[c][v].SetFillColor(sample[s]['fillcolor'])
             hist[c][v].SetFillStyle(sample[s]['fillstyle'])
@@ -74,7 +74,7 @@ def run(s, ss, filename):
 
 
 if __name__ == "__main__":
-
+    print "+ Job started at ", datetime.datetime.now().time()
     if not reduction in [0, 1]: print "+ Running with MC reduction factor of", reduction
     ncpu = multiprocessing.cpu_count() - 4 # Leave 4 CPU free
     if splitjobs: print "+ Splitting jobs over", ncpu, "cores..."
@@ -114,5 +114,6 @@ if __name__ == "__main__":
     print "+ Cleaning up..."
     os.system("rm -rf " + tmpdir)
     
+    print "+ Job ended at ", datetime.datetime.now().time()
     print '+ Done.'
 
