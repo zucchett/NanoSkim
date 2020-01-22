@@ -8,7 +8,8 @@ from ROOT import TFile, TTree, TH1, TLorentzVector, TObject
 data = ["data_obs"]
 back = ["Higgs", "WmWm", "WpWp", "VVV", "ZZ", "WZ", "WW", "TTTT", "TTZ", "TTW", "ST", "TTbar", "VGamma", "WJetsToLNu", "DYJetsToLL", "QCD"]
 sign = []
-variables = ["iSkim", "Z_mass", "Z_pt", "Z_Muonpt1", "Z_HT", "H_mass",\
+variables = {
+    "FIXME" : ["iSkim", "Z_mass", "Z_pt", "Z_Muonpt1", "Z_HT", "H_mass",\
              "Jpsi_mass", "Jpsi_massPt50", "Jpsi_massHT", "Jpsi_HT",\
              "Mue_mass", "Mue_HT", "Mue_CSVmax", "Mue_nj30",\
              "ZW_MTWmmm","ZW_MTWmme","ZW_MTWeem","ZW_Mmm3mu", "ZW_Mmm2me", "ZW_Mee2em", "ZW_nj30", "ZW_HT",\
@@ -16,8 +17,9 @@ variables = ["iSkim", "Z_mass", "Z_pt", "Z_Muonpt1", "Z_HT", "H_mass",\
              "e2mu_maxMuIso","e2mu_HT","e2mu_mMin","e2mu_CSVmax","e2mu_maxMuIsoCSV","e2mu_maxMuIsoCSVpt25","e2mu_maxMuIsoCSVpt40",\
              "SSmu_maxMuIso","SSmu_HT", "SSmu_nj30","SSmu_maxMuIsoIPlow", "SSmu_maxMuIso2j", "SSmu_maxMuIsoHT200", "SSmu_CSVmax", \
              "SSmu_maxMuIso2jPt1525", "SSmu_maxMuIso2jPt2540", "SSmu_maxMuIso2jPt25", "SSmu_maxMuIso2jPt40", \
-             "SSmu_maxMuIso2jbveto" , "SSmu_maxMuIso2jbtag"  , "SSmu_maxMuIso2jbtagPt40"]
-categories = ["FIXME", "Z2mCR"]
+             "SSmu_maxMuIso2jbveto" , "SSmu_maxMuIso2jbtag"  , "SSmu_maxMuIso2jbtagPt40"],
+    "Z2mCR" : [],
+}
 ########## ######## ##########
 
 

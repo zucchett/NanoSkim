@@ -33,9 +33,9 @@ verbose     = options.verbose if not splitjobs else False
 def run(s, ss, filename):
     # Define and initialize histograms
     hist = {}
-    for c in categories:
+    for c in variables.keys():
         hist[c] = {}
-        for v in variables:
+        for v in variables[c]:
             hist[c][v] = {}
             hist[c][v] = TH1F(c + "_" + v + "_" + s + "_" + filename, ";"+variable[v]['title']+";Events;"+('logx' if variable[v]['logx'] else '')+('logy' if variable[v]['logy'] else ''), variable[v]['nbins'], variable[v]['min'], variable[v]['max'])
             if variable[v]['nbins'] <= 0: hist[c][v] = TH1F(s, ";"+variable[v]['title']+";Events;"+('logx' if variable[v]['logx'] else '')+('logy' if variable[v]['logy'] else ''), len(variable[v]['bins'])-1, array('f', variable[v]['bins']))
@@ -59,10 +59,10 @@ def run(s, ss, filename):
     # Write output to file
     outFile = TFile(tmpdir + '/' + ss + '/' + filename, "RECREATE")
     outFile.cd()
-    for c in categories:
+    for c in variables.keys():
         if not outFile.GetDirectory(c): outFile.mkdir(c)
         outFile.cd(c)
-        for v in variables:
+        for v in variables[c]:
             var = v.replace('[', '_').replace(']', '')
             if not outFile.GetDirectory(var): outFile.mkdir(c + '/' + var)
             outFile.cd(c + '/' + var)
