@@ -4,9 +4,14 @@
 sample = {
     'data_obs' : {
         'files' : [
-            'SingleMuon_Run2016B_ver1-Nano1June2019_ver1-v1', 'SingleMuon_Run2016B_ver2-Nano1June2019_ver2-v1', 'SingleMuon_Run2016C-Nano1June2019-v1', 'SingleMuon_Run2016D-Nano1June2019-v1', 'SingleMuon_Run2016E-Nano1June2019-v1', 'SingleMuon_Run2016F-Nano1June2019-v1', 'SingleMuon_Run2016G-Nano1June2019-v1', 'SingleMuon_Run2016H-Nano1June2019-v1', \
-            'SingleElectron_Run2016B_ver1-Nano1June2019_ver1-v1', 'SingleElectron_Run2016B_ver2-Nano1June2019_ver2-v1', 'SingleElectron_Run2016C-Nano1June2019-v1', 'SingleElectron_Run2016D-Nano1June2019-v1', 'SingleElectron_Run2016E-Nano1June2019-v1', 'SingleElectron_Run2016F-Nano1June2019-v1', 'SingleElectron_Run2016G-Nano1June2019-v1', 'SingleElectron_Run2016H-Nano1June2019-v1'
-        ],
+            'SingleMuon_Run2016B_ver1-Nano1June2019_ver1-v1', 'SingleMuon_Run2016B_ver2-Nano1June2019_ver2-v1',\
+            'SingleMuon_Run2016C-Nano1June2019-v1', 'SingleMuon_Run2016D-Nano1June2019-v1', 'SingleMuon_Run2016E-Nano1June2019-v1',\
+            'SingleMuon_Run2016F-Nano1June2019-v1', 'SingleMuon_Run2016G-Nano1June2019-v1', 'SingleMuon_Run2016H-Nano1June2019-v1',\
+            'SingleElectron_Run2016B_ver1-Nano1June2019_ver1-v1', 'SingleElectron_Run2016B_ver2-Nano1June2019_ver2-v1',\
+            'SingleElectron_Run2016C-Nano1June2019-v1', 'SingleElectron_Run2016D-Nano1June2019-v1',\
+            'SingleElectron_Run2016E-Nano1June2019-v1', 'SingleElectron_Run2016F-Nano1June2019-v1',\
+            'SingleElectron_Run2016G-Nano1June2019-v1', 'SingleElectron_Run2016H-Nano1June2019-v1'
+         ],
         'fillcolor' : 0,
         'fillstyle' : 1,
         'linecolor' : 1,

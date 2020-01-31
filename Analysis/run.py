@@ -50,7 +50,7 @@ def run(s, ss, filename):
     inFile = TFile(NTUPLEDIR + '/' + ss + '/' + filename, "READ")
     tree = inFile.Get("Events")
     red = reduction if not "Run201" in ss else 1
-    loop(hist, tree, red)
+    loop(hist, tree, ss, red)
     inFile.Close()
     
     # Create output directories
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     # Wait for all jobs to finish
     pool.close()
     pool.join()
-    print "+ Jobs completed."
+    print "+ Jobs completed at", datetime.datetime.now().time()
     
     # Check that output is non-null
 #    dirList = os.system("ls " + tmpdir + "/*/*.root")
@@ -108,10 +108,10 @@ if __name__ == "__main__":
         for j, ss in enumerate(sample[s]['files']):
             os.system("hadd -f " + tmpdir + '/' + ss + ".root " + tmpdir + '/' + ss + "/*.root > /dev/null")
     
-    print "+ Macro-merging..."
+    print "+ Macro-merging...started at",  datetime.datetime.now().time()
     os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
     
-    print "+ Cleaning up..."
+    print "+ Cleaning up...:",  datetime.datetime.now().time()
     os.system("rm -rf " + tmpdir)
     
     print "+ Job ended at ", datetime.datetime.now().time()
