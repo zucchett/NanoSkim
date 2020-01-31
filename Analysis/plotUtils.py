@@ -9,7 +9,7 @@ from ROOT import TLegend, TLatex, TText, TLine, TBox, TMath
 
 from samples import sample
 from variables import variable
-NTUPLEDIR   = "/lustre/cmswork/zucchett/Ntuple/v1/"
+NTUPLEDIR   = "/lustre/cmswork/zucchett/Ntuple/v2/"
 
 ##################
 # ANALYSIS UTILS #

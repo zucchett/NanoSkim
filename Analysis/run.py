@@ -17,6 +17,7 @@ parser.add_option('-o', '--output', action='store', type='string', dest='output'
 parser.add_option('-p', '--parallelize', action='store_true', dest='parallelize', default=False)
 parser.add_option('-r', '--reduce', action='store', type='int', dest='reduce', default=0)
 parser.add_option('-t', '--tmpdir', action='store', type='string', dest='tmpdir', default='tmp')
+parser.add_option('-y', '--year', action='store', type='int', dest='year', default=0)
 parser.add_option('-v', '--verbose', action='store_true', dest='verbose', default=False)
 
 (options, args) = parser.parse_args()
@@ -25,6 +26,7 @@ output      = options.output
 splitjobs   = options.parallelize
 tmpdir      = options.tmpdir
 reduction   = max(1, int(options.reduce))
+year        = options.year
 verbose     = options.verbose if not splitjobs else False
 
 ########## ######## ##########
@@ -74,7 +76,7 @@ def run(s, ss, filename):
 
 
 if __name__ == "__main__":
-    print "+ Job started at ", datetime.datetime.now().time()
+    print "+ Job started [", datetime.datetime.now().time(), "]"
     if not reduction in [0, 1]: print "+ Running with MC reduction factor of", reduction
     ncpu = multiprocessing.cpu_count() - 4 # Leave 4 CPU free
     if splitjobs: print "+ Splitting jobs over", ncpu, "cores..."
@@ -86,15 +88,18 @@ if __name__ == "__main__":
         for j, ss in enumerate(sample[s]['files']):
             for f in os.listdir(NTUPLEDIR + '/' + ss):
                 if not f.endswith(".root"): continue
+                if year == 2016 and not ('Run2016' in ss or 'Summer16' in ss): continue
+                if year == 2017 and not ('Run2017' in ss or 'Fall17' in ss): continue
+                if year == 2018 and not ('Run2018' in ss or 'Autumn18' in ss): continue
                 if not splitjobs: run(s, ss, f)
                 else: pool.apply_async(run, args=(s, ss, f, ))
                 #hget = result.get()
-            if verbose: print ' + ', ss[:25], ' '*10, nfiles, ' '*10, nev
+                if verbose: print ' + ', ss[:25], ' '*10, len(sample[s]['files']), ' '*10
 
     # Wait for all jobs to finish
     pool.close()
     pool.join()
-    print "+ Jobs completed at", datetime.datetime.now().time()
+    print "+ Jobs completed [", datetime.datetime.now().time(), "]"
     
     # Check that output is non-null
 #    dirList = os.system("ls " + tmpdir + "/*/*.root")
@@ -108,12 +113,12 @@ if __name__ == "__main__":
         for j, ss in enumerate(sample[s]['files']):
             os.system("hadd -f " + tmpdir + '/' + ss + ".root " + tmpdir + '/' + ss + "/*.root > /dev/null")
     
-    print "+ Macro-merging...started at",  datetime.datetime.now().time()
+    print "+ Macro-merging [",  datetime.datetime.now().time(), "]"
     os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
     
-    print "+ Cleaning up...:",  datetime.datetime.now().time()
+    print "+ Cleaning up [",  datetime.datetime.now().time(), "]"
     os.system("rm -rf " + tmpdir)
     
-    print "+ Job ended at ", datetime.datetime.now().time()
+    print "+ Job ended [", datetime.datetime.now().time(), "]"
     print '+ Done.'
 

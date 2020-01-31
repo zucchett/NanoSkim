@@ -22,12 +22,13 @@ usage = "usage: %prog [options]"
 parser = optparse.OptionParser(usage)
 parser.add_option("-v", "--variable", action="store", type="string", dest="variable", default="")
 parser.add_option("-c", "--cut", action="store", type="string", dest="cut", default="")
+parser.add_option("-f", "--filename", action="store", type="string", dest="filename", default="")
+parser.add_option("-y", "--year", action="store", type="int", dest="year", default=0)
 parser.add_option("-n", "--norm", action="store_true", default=False, dest="norm")
-parser.add_option("-t", "--top", action="store_true", default=False, dest="top")
 parser.add_option("-a", "--all", action="store_true", default=False, dest="all")
 parser.add_option("-b", "--bash", action="store_true", default=False, dest="bash")
 parser.add_option("-B", "--blind", action="store_true", default=False, dest="blind")
-parser.add_option("-f", "--filename", action="store", type="string", dest="filename", default="")
+
 (options, args) = parser.parse_args()
 if options.bash: gROOT.SetBatch(True)
 
@@ -44,7 +45,8 @@ RATIO       = 4 # 0: No ratio plot; !=0: ratio between the top and bottom pads
 NORM        = options.norm
 PARALLELIZE = False
 BLIND       = False
-LUMI        = 35867
+YEAR        = options.year
+LUMI        = {0 : 35867.+41530.+59740., 2016 : 35867., 2017: 41530., 2018 : 59740.,}
 FILE        = options.filename if len(options.filename) > 0 else None
 
 ########## SAMPLES ##########
@@ -79,21 +81,24 @@ def plot(var, cut, norm=False, nm1=False):
     file = {}
     
     hist = {}
-    cutstring = "(eventWeightLumi)" + ("*("+cut+")" if len(cut)>0 else "")
+    cutstring = "(eventWeightLumi*stitchWeight)" + ("*("+cut+")" if len(cut)>0 else "")
     
     ### Create and fill MC histograms ###
     jobs = []
     queue = multiprocessing.Queue()
     for i, s in enumerate(data+back+sign):
         for j, ss in enumerate(sample[s]['files']):
-            if not 'data' in s or ('data' in s and ss in pd):
-                if treeRead: # Project from tree
-        #            hist[s] = projectLoop(s, pd, var, cutstring)
-                    p = multiprocessing.Process(target=parallelProject, args=(queue, s, ss, var, cutstring, ))
-                    jobs.append(p)
-                    p.start()
-                else: # Histogram written to file
-                    hist[s] = readhist(FILE, s, var, cut)
+            if s in data and not ss in pd: continue
+            if YEAR == 2016 and not ('Run2016' in ss or 'Summer16' in ss): continue
+            if YEAR == 2017 and not ('Run2017' in ss or 'Fall17' in ss): continue
+            if YEAR == 2018 and not ('Run2018' in ss or 'Autumn18' in ss): continue
+            if treeRead: # Project from tree
+    #            hist[s] = projectLoop(s, pd, var, cutstring)
+                p = multiprocessing.Process(target=parallelProject, args=(queue, s, ss, var, cutstring, ))
+                jobs.append(p)
+                p.start()
+            else: # Histogram written to file
+                hist[s] = readhist(FILE, s, var, cut)
     # Wait for all jobs to finish
     for job in jobs:
         h = queue.get()
@@ -183,7 +188,7 @@ def plot(var, cut, norm=False, nm1=False):
     
     #if logY: bkg.SetMinimum(1)
     leg.Draw()
-    drawCMS(LUMI, "Preliminary")
+    drawCMS(LUMI[YEAR], "Preliminary")
     if channel in aliasNames: drawRegion(aliasNames[channel], False)
     #drawAnalysis(channel)
     
@@ -245,31 +250,7 @@ def plot(var, cut, norm=False, nm1=False):
 def plotAll():
     gROOT.SetBatch(True)
     
-#    for v in ["dbt", "tau21", "mass"]: plotNorm(v, "Norm", True)
-    
     hists = {}
-    
-    file = TFile(NTUPLEDIR + "TT.root", 'READ')
-    file.cd()
-    # Looping over file content
-    for key in file.GetListOfKeys():
-        obj = key.ReadObj()
-        # Histograms
-        if obj.IsA().InheritsFrom('TH1'): continue
-        #    hists.append(obj.GetName())
-        # Tree
-        elif obj.IsA().InheritsFrom('TTree'): continue
-        # Directories
-        if obj.IsFolder() and (obj.GetName().endswith('qq') or len(obj.GetName())==2):
-            subdir = obj.GetName()
-            hists[subdir] = []
-            file.cd(subdir)
-            for subkey in file.GetDirectory(subdir).GetListOfKeys():
-                subobj = subkey.ReadObj()
-                if subobj.IsA().InheritsFrom('TH1'):
-                    hists[subdir].append(subobj.GetName())
-            file.cd('..')
-    file.Close() 
     
     for c, l in hists.iteritems():
         for h in l:

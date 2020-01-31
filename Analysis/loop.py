@@ -62,7 +62,7 @@ def loop(hist, tree, ss, red):
     for event in range(0, tree.GetEntries(), red):
    # for event in range(0, 10000, red):
       tree.GetEntry(event)
-      weight = tree.eventWeightLumi * red # per-event weight that also accounts for a reduction factor to run faster on MC        
+      weight = tree.eventWeightLumi * tree.stitchWeight * red # per-event weight that also accounts for a reduction factor to run faster on MC        
       hist["FIXME"]["iSkim"].Fill(tree.iSkim, weight)
       # special for J/psi (only single-mu data stream and MC ):
       if  Mudata or MCdata : 

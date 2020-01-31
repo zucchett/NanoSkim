@@ -6,7 +6,7 @@ alias = {
     "T2lCR" : "iSkim==2 && isSingleMuIsoTrigger && Electron_pt[0]>20. && Muon_charge[0]*Electron_charge[0]<0 && Muon_pfRelIso03_all[0]<0.10",
     "VV3mCR" : "iSkim==3 && isSingleMuIsoTrigger && Muon_pt[1]>20. && Muon_pt[2]>20. && Muon_pfRelIso03_all[0]<0.10 && Muon_pfRelIso03_all[1]<0.10 && Muon_pfRelIso03_all[2]<0.10",
     "VV2meCR" : "iSkim==4 && isSingleMuIsoTrigger && Muon_pt[1]>20. && Electron_pt[0]>20. && Muon_pfRelIso03_all[0]<0.10 && Muon_pfRelIso03_all[1]<0.10",
-    "T1mCR" : "iSkim==5 && isSingleMuIsoTrigger",
+    "T1mCR" : "iSkim==5 && isSingleMuIsoTrigger && Muon_pt[0]>40. && Muon_pfRelIso03_all[0]<0.10 && nCleanMuon>=1",
     "Z2eCR" : "iSkim==6 && isSingleEleIsoTrigger && Electron_charge[0]*Electron_charge[1]<0 && Z_mass > 60 && Z_mass < 120",
 }
 
@@ -16,5 +16,5 @@ aliasNames = {
     "T2lCR" : "1#mu, 1e control region",
     "VV3mCR" : "3#mu control region",
     "VV2meCR" : "2#mu, 1e control region",
-    "T1mCR" : "single #mu t#bar{t} control region",
+    "T1mCR" : "1#mu, t#bar{t} control region",
 }
