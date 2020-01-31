@@ -1,5 +1,5 @@
 variable = {
-    'iSkim': {
+    'iSkim' : {
         'title' : "iSkim",
         'nbins' : 7,
         'min' : -0.5,
@@ -7,7 +7,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Jpsi_mass': {
+    'Jpsi_mass' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 1,
@@ -15,7 +15,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Jpsi_massPt50': {
+    'Jpsi_massPt50' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 1,
@@ -23,7 +23,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Jpsi_massHT': {
+    'Jpsi_massHT' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 1,
@@ -31,7 +31,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Jpsi_HT': {
+    'Jpsi_HT' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -39,7 +39,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Jpsi_dxy': {
+    'Jpsi_dxy' : {
         'title' : "dxy (cm)",
         'nbins' : 100,
         'min' : 0,
@@ -47,7 +47,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },    
-    'H_M4mu': {
+    'H_M4mu' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 40,
@@ -55,7 +55,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     }, 
-    'H_M2mu2e': {
+    'H_M2mu2e' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 40,
@@ -63,7 +63,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     }, 
-    'H_M4e': {
+    'H_M4e' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 40,
@@ -71,7 +71,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'H_M4lept': {
+    'H_M4lept' : {
         'title' : "m_{4l} (GeV)",
         'nbins' : 100,
         'min' : 40,
@@ -79,7 +79,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },                                
-    'Z_mm': {
+    'Z_mm' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 15,
@@ -87,7 +87,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Z_pt': {
+    'Z_pt' : {
         'title' : "p_{T}^{ll} (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -95,7 +95,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_Muonpt1': {
+    'Z_Muonpt1' : {
         'title' : "Muon 1 p_{T} (GeV)",
         'nbins' : 80,
         'min' : 0,
@@ -103,7 +103,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_HT': {
+    'Z_HT' : {
         'title' : "HT (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -111,7 +111,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     }, 
-    'Z_ee': {
+    'Z_ee' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 15,
@@ -119,7 +119,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Z_ptee': {
+    'Z_ptee' : {
         'title' : "p_{T}^{ll} (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -127,7 +127,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_Electronpt1': {
+    'Z_Electronpt1' : {
         'title' : "Muon 1 p_{T} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -135,7 +135,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_HTee': {
+    'Z_HTee' : {
         'title' : "HT (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -143,7 +143,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },      
-    'Z_eebarrel': {
+    'Z_eebarrel' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 15,
@@ -151,7 +151,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Z_eeendcap': {
+    'Z_eeendcap' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 15,
@@ -159,7 +159,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Z_eeSSbarrel': {
+    'Z_eeSSbarrel' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 15,
@@ -167,7 +167,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Z_eeSSendcap': {
+    'Z_eeSSendcap' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 15,
@@ -175,7 +175,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },        
-    'Z_Elept1barrel': {
+    'Z_Elept1barrel' : {
         'title' : "Electron 1 p_{T} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -183,7 +183,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_Elept1endcap': {
+    'Z_Elept1endcap' : {
         'title' : "Electron 1 p_{T} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -191,7 +191,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_Elept1SSbarrel': {
+    'Z_Elept1SSbarrel' : {
         'title' : "Electron 1 p_{T} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -199,7 +199,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Z_Elept1SSendcap': {
+    'Z_Elept1SSendcap' : {
         'title' : "Electron 1 p_{T} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -207,7 +207,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },     
-    'ZW_MTW3lept': {
+    'ZW_MTW3lept' : {
         'title' : "MTW (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -215,7 +215,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     }, 
-    'ZW_MTW3leptCSV': {
+    'ZW_MTW3leptCSV' : {
         'title' : "MTW (GeV)",
         'nbins' : 30,
         'min' : 0,
@@ -223,7 +223,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },                
-    'ZW_MTWmmm': {
+    'ZW_MTWmmm' : {
         'title' : "MTW (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -231,7 +231,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     }, 
-    'ZW_MTWmmmCSV': {
+    'ZW_MTWmmmCSV' : {
         'title' : "MTW (GeV)",
         'nbins' : 30,
         'min' : 0,
@@ -239,7 +239,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },     
-    'ZW_MTWmme': {
+    'ZW_MTWmme' : {
         'title' : "MTW (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -247,7 +247,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },     
-    'ZW_MTWmmeCSV': {
+    'ZW_MTWmmeCSV' : {
         'title' : "MTW (GeV)",
         'nbins' : 30,
         'min' : 0,
@@ -255,7 +255,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },            
-    'ZW_MTWeem': {
+    'ZW_MTWeem' : {
         'title' : "MTW (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -263,7 +263,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_MTWeemCSV': {
+    'ZW_MTWeemCSV' : {
         'title' : "MTW (GeV)",
         'nbins' : 30,
         'min' : 0,
@@ -271,7 +271,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },         
-    'ZW_MTWeee': {
+    'ZW_MTWeee' : {
         'title' : "MTW (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -279,7 +279,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },      
-    'ZW_MTWeeeCSV': {
+    'ZW_MTWeeeCSV' : {
         'title' : "MTW (GeV)",
         'nbins' : 30,
         'min' : 0,
@@ -287,7 +287,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },         
-    'ZW_Mmm3mu': {
+    'ZW_Mmm3mu' : {
         'title' : "M(mu+mu-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -295,7 +295,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mmm2me': {
+    'ZW_Mmm2me' : {
         'title' : "M(mu+mu-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -303,7 +303,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mee2em': {
+    'ZW_Mee2em' : {
         'title' : "M(e+e-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -311,7 +311,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mee3e': {
+    'ZW_Mee3e' : {
         'title' : "M(e+e-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -319,7 +319,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },    
-    'ZW_Mmm3muCSV': {
+    'ZW_Mmm3muCSV' : {
         'title' : "M(mu+mu-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -327,7 +327,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mmm2meCSV': {
+    'ZW_Mmm2meCSV' : {
         'title' : "M(mu+mu-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -335,7 +335,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mee2emCSV': {
+    'ZW_Mee2emCSV' : {
         'title' : "M(e+e-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -343,7 +343,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mee3eCSV': {
+    'ZW_Mee3eCSV' : {
         'title' : "M(e+e-) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -351,7 +351,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_Mll3leptCSV': {
+    'ZW_Mll3leptCSV' : {
         'title' : "M(ll) (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -359,7 +359,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },            
-    'ZW_MET3mu': {
+    'ZW_MET3mu' : {
         'title' : "MET (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -367,7 +367,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_MET2me': {
+    'ZW_MET2me' : {
         'title' : "MET (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -375,7 +375,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_MET2em': {
+    'ZW_MET2em' : {
         'title' : "MET (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -383,7 +383,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'ZW_MET3e': {
+    'ZW_MET3e' : {
         'title' : "MET (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -391,7 +391,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },        
-    'ZW_nj30': {
+    'ZW_nj30' : {
         'title' : "Njets",
         'nbins' : 20,
         'min' : 0,
@@ -399,7 +399,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'ZW_nj30CSV': {
+    'ZW_nj30CSV' : {
         'title' : "Njets",
         'nbins' : 20,
         'min' : 0,
@@ -407,7 +407,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },    
-    'ZW_HT': {
+    'ZW_HT' : {
         'title' : "HT",
         'nbins' : 40,
         'min' : 0,
@@ -415,7 +415,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'ZW_ptZ': {
+    'ZW_ptZ' : {
         'title' : "ptZ",
         'nbins' : 40,
         'min' : 0,
@@ -423,7 +423,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },    
-    'ZW_HTCSV': {
+    'ZW_HTCSV' : {
         'title' : "HT",
         'nbins' : 40,
         'min' : 0,
@@ -431,7 +431,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },	
-    'ZW_ptZCSV': {
+    'ZW_ptZCSV' : {
         'title' : "ptZ",
         'nbins' : 40,
         'min' : 0,
@@ -439,7 +439,7 @@ variable = {
         'logx' : False,
         'logy' : False,	 
     },    
-    'ZW_CSV': {
+    'ZW_CSV' : {
         'title' : "CSV ",
         'nbins' : 50,
         'min' : 0,
@@ -447,7 +447,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     }, 
-    'ZW_CSV2': {
+    'ZW_CSV2' : {
         'title' : "CSV ",
         'nbins' : 50,
         'min' : 0,
@@ -455,7 +455,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },         
-    'mu3_maxMuIso': {
+    'mu3_maxMuIso' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -463,7 +463,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },    
-    'mu3_HT': {
+    'mu3_HT' : {
         'title' : "HT",
         'nbins' : 100,
         'min' : 0,
@@ -471,7 +471,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'mu3_mMin': {
+    'mu3_mMin' : {
         'title' : "Mmin",
         'nbins' : 100,
         'min' : 0,
@@ -479,7 +479,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },    
-    'mu3_CSVmax': {
+    'mu3_CSVmax' : {
         'title' : "CSV",
         'nbins' : 50,
         'min' : 0.,
@@ -487,7 +487,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'mu3_maxMuIsoCSVpt1525': {
+    'mu3_maxMuIsoCSVpt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -495,7 +495,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },	
-    'mu3_maxMuIsoCSVpt25': {
+    'mu3_maxMuIsoCSVpt25' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -503,7 +503,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },	
-    'mu3_maxMuIsoCSVpt40': {
+    'mu3_maxMuIsoCSVpt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -511,7 +511,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Mue_isomu': {
+    'Mue_isomu' : {
         'title' : "isomu",
         'nbins' : 100,
         'min' : 0,
@@ -519,7 +519,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },    	     
-    'Mue_mass': {
+    'Mue_mass' : {
         'title' : "m_{ll} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -527,7 +527,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Mue_HT': {
+    'Mue_HT' : {
         'title' : "HT (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -535,7 +535,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Mue_nj30': {
+    'Mue_nj30' : {
         'title' : "Njets",
         'nbins' : 20,
         'min' : 0,
@@ -543,7 +543,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-     'Mue_CSVmax': {
+     'Mue_CSVmax' : {
         'title' : "CSV",
         'nbins' : 50,
         'min' : 0,
@@ -551,7 +551,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'e2mu_maxMuIso': {
+    'e2mu_maxMuIso' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -559,7 +559,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },          
-    'e2mu_HT': {
+    'e2mu_HT' : {
         'title' : "HT",
         'nbins' : 100,
         'min' : 0,
@@ -567,7 +567,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'e2mu_mMin': {
+    'e2mu_mMin' : {
         'title' : "Mmin",
         'nbins' : 100,
         'min' : 0,
@@ -575,7 +575,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'e2mu_CSVmax': {
+    'e2mu_CSVmax' : {
         'title' : "CSV",
         'nbins' : 50,
         'min' : 0.,
@@ -583,7 +583,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },          
-    'e2mu_maxMuIsoCSVpt1525': {
+    'e2mu_maxMuIsoCSVpt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -591,7 +591,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'e2mu_maxMuIsoCSVpt25': {
+    'e2mu_maxMuIsoCSVpt25' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -599,7 +599,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'e2mu_maxMuIsoCSVpt40': {
+    'e2mu_maxMuIsoCSVpt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -607,7 +607,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'lept3_maxMuIsoCSVpt1525': {
+    'lept3_maxMuIsoCSVpt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -615,7 +615,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },	
-    'lept3_maxMuIsoCSVpt25': {
+    'lept3_maxMuIsoCSVpt25' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -623,7 +623,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },	
-    'lept3_maxMuIsoCSVpt40': {
+    'lept3_maxMuIsoCSVpt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -631,7 +631,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },       
-    'SSmu_maxMuIso': {
+    'SSmu_maxMuIso' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -639,7 +639,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_maxMuIsoIPlow': {
+    'SSmu_maxMuIsoIPlow' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -647,7 +647,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_nj30': {
+    'SSmu_nj30' : {
         'title' : "HT",
         'nbins' : 20,
         'min' : 0,
@@ -655,7 +655,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },          
-    'SSmu_HT': {
+    'SSmu_HT' : {
         'title' : "HT",
         'nbins' : 100,
         'min' : 0,
@@ -663,7 +663,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_CSVmax': {
+    'SSmu_CSVmax' : {
         'title' : "CSVmax",
         'nbins' : 50,
         'min' : 0,
@@ -671,7 +671,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },  
-    'SSmu_CSVmaxLowIso': {
+    'SSmu_CSVmaxLowIso' : {
         'title' : "CSVmax",
         'nbins' : 20,
         'min' : 0,
@@ -679,7 +679,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },         
-    'SSmu_maxMuIso2j': {
+    'SSmu_maxMuIso2j' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -687,7 +687,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_maxMuIsoHT200': {
+    'SSmu_maxMuIsoHT200' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -695,7 +695,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmu_maxMuIso2jPt1525': {
+    'SSmu_maxMuIso2jPt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -703,7 +703,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_maxMuIso2jPt2540': {
+    'SSmu_maxMuIso2jPt2540' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -711,7 +711,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_maxMuIso2jPt25': {
+    'SSmu_maxMuIso2jPt25' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -719,7 +719,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },   
-    'SSmu_maxMuIso2jPt40': {
+    'SSmu_maxMuIso2jPt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -727,7 +727,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },                        
-    'SSmu_maxMuIso2jPt1525higIP': {
+    'SSmu_maxMuIso2jPt1525higIP' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -735,7 +735,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_maxMuIso2jPt2540higIP': {
+    'SSmu_maxMuIso2jPt2540higIP' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -743,7 +743,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmu_maxMuIso2jPt25higIP': {
+    'SSmu_maxMuIso2jPt25higIP' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -751,7 +751,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },   
-    'SSmu_maxMuIso2jPt40higIP': {
+    'SSmu_maxMuIso2jPt40higIP' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -759,7 +759,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },  
-    'SSmu_maxMuIso2jbveto': {
+    'SSmu_maxMuIso2jbveto' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -767,7 +767,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-   'SSmu_maxMuIsobvetoplus': {
+   'SSmu_maxMuIsobvetoplus' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -775,7 +775,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-   'SSmu_maxMuIsobvetominus': {
+   'SSmu_maxMuIsobvetominus' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -783,7 +783,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },         
-    'SSmu_maxMuIso2jbvetoPt1525': {
+    'SSmu_maxMuIso2jbvetoPt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -791,7 +791,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmu_Mjjbveto': {
+    'SSmu_Mjjbveto' : {
         'title' : "Mjj (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -799,7 +799,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmu_Mjjbvetoplus': {
+    'SSmu_Mjjbvetoplus' : {
         'title' : "Mjj (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -807,7 +807,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmu_Mjjbvetominus': {
+    'SSmu_Mjjbvetominus' : {
         'title' : "Mjj (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -815,7 +815,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },               
-    'SSmu_maxMuIso2jbtag': {
+    'SSmu_maxMuIso2jbtag' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -823,7 +823,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmu_maxMuIso2jbtagPt1525': {
+    'SSmu_maxMuIso2jbtagPt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -831,7 +831,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmu_maxMuIso2jbtagPt40': {
+    'SSmu_maxMuIso2jbtagPt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -839,7 +839,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmu_maxMuIso2jbtagHT350': {
+    'SSmu_maxMuIso2jbtagHT350' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -847,7 +847,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmu_HTbtagPt25': {
+    'SSmu_HTbtagPt25' : {
         'title' : "HT",
         'nbins' : 40,
         'min' : 0,
@@ -855,7 +855,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },    
-    'SSmue_maxMuIso': {
+    'SSmue_maxMuIso' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -863,7 +863,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmue_maxMuIsoIPlow': {
+    'SSmue_maxMuIsoIPlow' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -871,7 +871,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmue_maxMuIsoTRGele': {
+    'SSmue_maxMuIsoTRGele' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -879,7 +879,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmue_nj30': {
+    'SSmue_nj30' : {
         'title' : "HT",
         'nbins' : 20,
         'min' : 0,
@@ -887,7 +887,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },          
-    'SSmue_HT': {
+    'SSmue_HT' : {
         'title' : "HT",
         'nbins' : 100,
         'min' : 0,
@@ -895,7 +895,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmue_CSVmax': {
+    'SSmue_CSVmax' : {
         'title' : "CSVmax",
         'nbins' : 50,
         'min' : 0,
@@ -903,7 +903,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },  
-    'SSmue_CSVmaxLowIso': {
+    'SSmue_CSVmaxLowIso' : {
         'title' : "CSVmax",
         'nbins' : 20,
         'min' : 0,
@@ -911,7 +911,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },         
-    'SSmue_maxMuIso2j': {
+    'SSmue_maxMuIso2j' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -919,7 +919,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmue_maxMuIsoHT200': {
+    'SSmue_maxMuIsoHT200' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -927,7 +927,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmue_maxMuIso2jPt1525': {
+    'SSmue_maxMuIso2jPt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -935,7 +935,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmue_maxMuIso2jPt2540': {
+    'SSmue_maxMuIso2jPt2540' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -943,7 +943,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     }, 
-    'SSmue_maxMuIso2jPt25': {
+    'SSmue_maxMuIso2jPt25' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -951,7 +951,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },   
-    'SSmue_maxMuIso2jPt40': {
+    'SSmue_maxMuIso2jPt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -959,7 +959,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },                        
-    'SSmue_maxMuIso2jbveto': {
+    'SSmue_maxMuIso2jbveto' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -967,7 +967,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-   'SSmue_maxMuIsobvetoplus': {
+   'SSmue_maxMuIsobvetoplus' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -975,7 +975,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-   'SSmue_maxMuIsobvetominus': {
+   'SSmue_maxMuIsobvetominus' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -983,7 +983,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },         
-    'SSmue_maxMuIso2jbvetoPt1525': {
+    'SSmue_maxMuIso2jbvetoPt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -991,7 +991,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmue_Mjjbveto': {
+    'SSmue_Mjjbveto' : {
         'title' : "Mjj (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -999,7 +999,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmue_Mjjbvetoplus': {
+    'SSmue_Mjjbvetoplus' : {
         'title' : "Mjj (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -1007,7 +1007,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmue_Mjjbvetominus': {
+    'SSmue_Mjjbvetominus' : {
         'title' : "Mjj (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -1015,7 +1015,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },               
-    'SSmue_maxMuIso2jbtag': {
+    'SSmue_maxMuIso2jbtag' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -1023,7 +1023,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmue_maxMuIso2jbtagPt1525': {
+    'SSmue_maxMuIso2jbtagPt1525' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -1031,7 +1031,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'SSmue_maxMuIso2jbtagPt40': {
+    'SSmue_maxMuIso2jbtagPt40' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -1039,7 +1039,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },
-    'SSmue_maxMuIso2jbtagHT350': {
+    'SSmue_maxMuIso2jbtagHT350' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0,
@@ -1047,7 +1047,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },    
-    'SSmue_HTbtagPt25': {
+    'SSmue_HTbtagPt25' : {
         'title' : "HT",
         'nbins' : 40,
         'min' : 0,
@@ -1055,7 +1055,7 @@ variable = {
         'logx' : False,
         'logy' : False,	
     },     
-    'tt_Wqqmass': {
+    'tt_Wqqmass' : {
         'title' : "Mjj (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1063,7 +1063,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tt_Tlvb1': {
+    'tt_Tlvb1' : {
         'title' : "Mlvb1 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1071,7 +1071,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tt_Tlvb2': {
+    'tt_Tlvb2' : {
         'title' : "Mlvb2 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1079,7 +1079,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tt_Tqqb1': {
+    'tt_Tqqb1' : {
         'title' : "Mqqb1 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1087,7 +1087,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tt_Tqqb2': {
+    'tt_Tqqb2' : {
         'title' : "Mqqb2 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1095,7 +1095,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },                   
-    'tte_Wqqmass': {
+    'tte_Wqqmass' : {
         'title' : "Mjj (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1103,7 +1103,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tte_Tlvb1': {
+    'tte_Tlvb1' : {
         'title' : "Mlvb1 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1111,7 +1111,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tte_Tlvb2': {
+    'tte_Tlvb2' : {
         'title' : "Mlvb2 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1119,7 +1119,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tte_Tqqb1': {
+    'tte_Tqqb1' : {
         'title' : "Mqqb1 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1127,7 +1127,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },  
-    'tte_Tqqb2': {
+    'tte_Tqqb2' : {
         'title' : "Mqqb2 (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1135,7 +1135,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },                        
-    'W_mass': {
+    'W_mass' : {
         'title' : "m_{l#nu} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1143,7 +1143,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'W_tmass': {
+    'W_tmass' : {
         'title' : "m_{T} (GeV)",
         'nbins' : 100,
         'min' : 0,
@@ -1151,7 +1151,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'W_pt': {
+    'W_pt' : {
         'title' : "p_{T}^{l#nu} (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -1159,7 +1159,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Muon_pt[0]': {
+    'Muon_pt[0]' : {
         'title' : "Muon 1 p_{T} (GeV)",
         'nbins' : 80,
         'min' : 0,
@@ -1167,7 +1167,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Muon_pt[1]': {
+    'Muon_pt[1]' : {
         'title' : "Muon 2 p_{T} (GeV)",
         'nbins' : 40,
         'min' : 0,
@@ -1175,7 +1175,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Muon_pt[2]': {
+    'Muon_pt[2]' : {
         'title' : "Muon 3 p_{T} (GeV)",
         'nbins' : 40,
         'min' : 0,
@@ -1183,7 +1183,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Muon_pfRelIso03_all[0]': {
+    'Muon_pfRelIso03_all[0]' : {
         'title' : "Muon 1 isolation",
         'nbins' : 50,
         'min' : 0,
@@ -1191,7 +1191,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Muon_pfRelIso03_all[1]': {
+    'Muon_pfRelIso03_all[1]' : {
         'title' : "Muon 2 isolation",
         'nbins' : 50,
         'min' : 0,
@@ -1199,7 +1199,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Muon_pfRelIso03_all[2]': {
+    'Muon_pfRelIso03_all[2]' : {
         'title' : "Muon 3 isolation",
         'nbins' : 50,
         'min' : 0,
@@ -1207,7 +1207,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Muon_charge[0]*Muon_charge[1]': {
+    'Muon_charge[0]*Muon_charge[1]' : {
         'title' : "Muon 1 and 2 sign",
         'nbins' : 3,
         'min' : -1.5,
@@ -1215,7 +1215,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Electron_pt[0]': {
+    'Electron_pt[0]' : {
         'title' : "Electron 1 p_{T} (GeV)",
         'nbins' : 80,
         'min' : 0,
@@ -1223,7 +1223,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Electron_pt[1]': {
+    'Electron_pt[1]' : {
         'title' : "Electron 2 p_{T} (GeV)",
         'nbins' : 40,
         'min' : 0,
@@ -1231,7 +1231,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Electron_pt[2]': {
+    'Electron_pt[2]' : {
         'title' : "Electron 3 p_{T} (GeV)",
         'nbins' : 40,
         'min' : 0,
@@ -1239,7 +1239,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'Electron_pfRelIso03_all[0]': {
+    'Electron_pfRelIso03_all[0]' : {
         'title' : "Electron 1 isolation",
         'nbins' : 50,
         'min' : 0,
@@ -1247,7 +1247,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Electron_pfRelIso03_all[1]': {
+    'Electron_pfRelIso03_all[1]' : {
         'title' : "Electron 2 isolation",
         'nbins' : 50,
         'min' : 0,
@@ -1255,7 +1255,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Electron_pfRelIso03_all[2]': {
+    'Electron_pfRelIso03_all[2]' : {
         'title' : "Electron 3 isolation",
         'nbins' : 50,
         'min' : 0,
@@ -1263,7 +1263,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'Muon_charge[0]*Electron_charge[0]': {
+    'Muon_charge[0]*Electron_charge[0]' : {
         'title' : "Muon 1 and Electron 1 sign",
         'nbins' : 3,
         'min' : -1.5,
@@ -1271,7 +1271,7 @@ variable = {
         'logx' : False,
         'logy' : False,
     },
-    'MET_pt[0]': {
+    'MET_pt[0]' : {
         'title' : "CHS #slash{E}_{T} (GeV)",
         'nbins' : 50,
         'min' : 0,
@@ -1279,7 +1279,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'minMuonIso': {
+    'minMuonIso' : {
         'title' : "minimum Muon Iso",
         'nbins' : 100,
         'min' : 0.01,
@@ -1287,7 +1287,7 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'maxMuonIso': {
+    'maxMuonIso' : {
         'title' : "maximum Muon Iso",
         'nbins' : 100,
         'min' : 0.01,
@@ -1295,7 +1295,223 @@ variable = {
         'logx' : False,
         'logy' : True,
     },
-    'lumiWeight': {
+    'minMuonMetDPhi' : {
+        'title' : "min #Delta #phi (#mu, #slash{E}_{T})",
+        'nbins' : 50,
+        'min' : 0.,
+        'max' : 3.1415,
+        'logx' : False,
+        'logy' : False,
+    },
+    'maxMuonMetDPhi' : {
+        'title' : "max #Delta #phi (#mu, #slash{E}_{T})",
+        'nbins' : 50,
+        'min' : 0.,
+        'max' : 3.1415,
+        'logx' : False,
+        'logy' : False,
+    },
+    'minMuonJetDR' : {
+        'title' : "min #Delta R (#mu, j)",
+        'nbins' : 50,
+        'min' : 0.,
+        'max' : 5.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'HT30' : {
+        'title' : "HT (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 1000.,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nj20' : {
+        'title' : "number of clean jets with p_{T}>20 GeV",
+        'nbins' : 15,
+        'min' : -0.5,
+        'max' : 14.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nj30' : {
+        'title' : "number of clean jets with p_{T}>30 GeV",
+        'nbins' : 15,
+        'min' : -0.5,
+        'max' : 14.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nj40' : {
+        'title' : "number of clean jets with p_{T}>40 GeV",
+        'nbins' : 15,
+        'min' : -0.5,
+        'max' : 14.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nBJet' : {
+        'title' : "number of b-tagged jets",
+        'nbins' : 6,
+        'min' : -0.5,
+        'max' : 5.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nCleanElectron' : {
+        'title' : "number of clean electrons",
+        'nbins' : 6,
+        'min' : -0.5,
+        'max' : 5.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nCleanMuon' : {
+        'title' : "number of clean muons",
+        'nbins' : 6,
+        'min' : -0.5,
+        'max' : 5.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'nCleanJet' : {
+        'title' : "number of clean jets",
+        'nbins' : 15,
+        'min' : -0.5,
+        'max' : 14.5,
+        'logx' : False,
+        'logy' : True,
+    },
+    'll_dEta' : {
+        'title' : "#Delta #eta (ll)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 5.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'll_dPhi' : {
+        'title' : "#Delta #phi (ll)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 3.1415,
+        'logx' : False,
+        'logy' : False,
+    },
+    'll_dR' : {
+        'title' : "#Delta R (ll)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 5.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'Wqq_mass' : {
+        'title' : "hadronic W mass (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 200.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'Tlvb1_mass' : {
+        'title' : "leptonic top 1 mass (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 400.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'Tlvb2_mass' : {
+        'title' : "leptonic top 2 mass (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 400.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'Tqqb1_mass' : {
+        'title' : "hadronic top 1 mass (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 400.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'Tqqb2_mass' : {
+        'title' : "hadronic top 2 mass (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 400.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'jj_mass' : {
+        'title' : "m_{jj} (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 400,
+        'logx' : False,
+        'logy' : False,
+    },
+    'jj_pt' : {
+        'title' : "p_{T}^{jj} (GeV)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 200.,
+        'logx' : False,
+        'logy' : True,
+    },
+    'jj_dEta' : {
+        'title' : "#Delta #eta (jj)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 3.1415,
+        'logx' : False,
+        'logy' : False,
+    },
+    'jj_dPhi' : {
+        'title' : "#Delta #phi (jj)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 5.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'jj_dR' : {
+        'title' : "#Delta R (jj)",
+        'nbins' : 100,
+        'min' : 0.,
+        'max' : 5.,
+        'logx' : False,
+        'logy' : False,
+    },
+    'nj_mass' : {
+        'title' : "m_{all jets} (GeV)",
+        'nbins' : 100,
+        'min' : 0,
+        'max' : 400,
+        'logx' : False,
+        'logy' : False,
+    },
+    'vis_mass' : {
+        'title' : "m_{all} (GeV)",
+        'nbins' : 100,
+        'min' : 0,
+        'max' : 400,
+        'logx' : False,
+        'logy' : False,
+    },
+    'lljj_mass' : {
+        'title' : "m_{lljj} (GeV)",
+        'nbins' : 100,
+        'min' : 0,
+        'max' : 400,
+        'logx' : False,
+        'logy' : False,
+    },
+    'lumiWeight' : {
         'title' : "lumiWeight",
         'nbins' : 1000,
         'min' : 0.,

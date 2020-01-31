@@ -233,9 +233,9 @@ sample = {
     },
     'QCD' : {
         'files' : [
-            'QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
-            'QCD_HT200to300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT200to300_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
-            'QCD_HT300to500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT300to500_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
+#            'QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT100to200_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT100to200_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
+#            'QCD_HT200to300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT200to300_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT200to300_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
+#            'QCD_HT300to500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT300to500_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT300to500_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
             'QCD_HT500to700_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT500to700_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT500to700_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
             'QCD_HT700to1000_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT700to1000_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT700to1000_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
             'QCD_HT1000to1500_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_RunIISummer16', 'QCD_HT1000to1500_TuneCP5_13TeV-madgraph-pythia8_RunIIFall17', 'QCD_HT1000to1500_TuneCP5_13TeV-madgraphMLM-pythia8_RunIIAutumn18', \
