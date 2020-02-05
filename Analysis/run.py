@@ -111,14 +111,22 @@ if __name__ == "__main__":
     print "+ Micro-merging..."
     for s in data+back+sign:
         for j, ss in enumerate(sample[s]['files']):
+            if year == 2016 and not ('Run2016' in ss or 'Summer16' in ss): continue
+            if year == 2017 and not ('Run2017' in ss or 'Fall17' in ss): continue
+            if year == 2018 and not ('Run2018' in ss or 'Autumn18' in ss): continue
             os.system("hadd -f " + tmpdir + '/' + ss + ".root " + tmpdir + '/' + ss + "/*.root > /dev/null")
     
-    print "+ Macro-merging [",  datetime.datetime.now().time(), "]"
-    os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
+    if year==0:
+        print "+ Macro-merging [",  datetime.datetime.now().time(), "]"
+        os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
+
+        print "+ Cleaning up [",  datetime.datetime.now().time(), "]"
+        os.system("rm -rf " + tmpdir)
+
+        print "+ Job ended [", datetime.datetime.now().time(), "]"
+    else:
+        print "- Macro-merging not performed. Please run the following command when all years are completed:"
+        print "hadd -f " + output + " " + tmpdir + "/*.root > /dev/null"
     
-    print "+ Cleaning up [",  datetime.datetime.now().time(), "]"
-    os.system("rm -rf " + tmpdir)
-    
-    print "+ Job ended [", datetime.datetime.now().time(), "]"
     print '+ Done.'
 
