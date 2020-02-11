@@ -16,17 +16,17 @@ parser = optparse.OptionParser(usage)
 parser.add_option('-o', '--output', action='store', type='string', dest='output', default='output.root')
 parser.add_option('-p', '--parallelize', action='store_true', dest='parallelize', default=False)
 parser.add_option('-r', '--reduce', action='store', type='int', dest='reduce', default=0)
-parser.add_option('-t', '--tmpdir', action='store', type='string', dest='tmpdir', default='tmp')
 parser.add_option('-y', '--year', action='store', type='int', dest='year', default=0)
+parser.add_option('-t', '--tmpdir', action='store', type='string', dest='tmpdir', default='tmp')
 parser.add_option('-v', '--verbose', action='store_true', dest='verbose', default=False)
 
 (options, args) = parser.parse_args()
 
-output      = options.output
+output      = options.output.replace(".root", "_%d.root" % options.year if not options.year==0 else ".root")
 splitjobs   = options.parallelize
-tmpdir      = options.tmpdir
 reduction   = max(1, int(options.reduce))
 year        = options.year
+tmpdir      = options.tmpdir + ("_%d" % options.year if not options.year==0 else "")
 verbose     = options.verbose if not splitjobs else False
 
 ########## ######## ##########
@@ -116,17 +116,17 @@ if __name__ == "__main__":
             if year == 2018 and not ('Run2018' in ss or 'Autumn18' in ss): continue
             os.system("hadd -f " + tmpdir + '/' + ss + ".root " + tmpdir + '/' + ss + "/*.root > /dev/null")
     
-    if year==0:
-        print "+ Macro-merging [",  datetime.datetime.now().time(), "]"
-        os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
+    print "+ Macro-merging [",  datetime.datetime.now().time(), "]"
+    os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
 
-        print "+ Cleaning up [",  datetime.datetime.now().time(), "]"
-        os.system("rm -rf " + tmpdir)
+    print "+ Cleaning up [",  datetime.datetime.now().time(), "]"
+    os.system("rm -rf " + tmpdir)
 
-        print "+ Job ended [", datetime.datetime.now().time(), "]"
-    else:
-        print "- Macro-merging not performed. Please run the following command when all years are completed:"
-        print "hadd -f " + output + " " + tmpdir + "/*.root > /dev/null"
+    print "+ Job ended [", datetime.datetime.now().time(), "]"
+    
+    if year != 0:
+        print "+ The output is separated by year. After all jobs are finished, they can be merged in a single file by running the following command:"
+        print "hadd -f " + output.replace("_%d" % year, "") + " " + output.replace("_%d" % year, "").replace(".root", "") + "_*.root"
     
     print '+ Done.'
 
