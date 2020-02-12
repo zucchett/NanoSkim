@@ -1,0 +1,2 @@
+/store/mc/RunIIAutumn18NanoAODv5/HWminusJ_HToWW_M125_13TeV_powheg_jhugen724_pythia8_TuneCP5/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/30000/CAB48DBE-E4D0-AF4F-838D-BE5749D9181D.root
+/store/mc/RunIIAutumn18NanoAODv5/HWminusJ_HToWW_M125_13TeV_powheg_jhugen724_pythia8_TuneCP5/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/30000/DED1E81F-1C0F-3646-8E29-0A6D2757434C.root

@@ -1,0 +1,2 @@
+/store/mc/RunIISummer16NanoAODv5/WJetsToLNu_Pt-600ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7_ext1-v1/250000/A1701B28-C91B-FB4C-9DF6-7BD405C4380F.root
+/store/mc/RunIISummer16NanoAODv5/WJetsToLNu_Pt-600ToInf_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7_ext1-v1/250000/3759918C-6348-354B-915F-A64A370523C6.root

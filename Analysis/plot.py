@@ -44,7 +44,7 @@ SIGNAL      = 1 # Signal magnification factor
 RATIO       = 4 # 0: No ratio plot; !=0: ratio between the top and bottom pads
 NORM        = options.norm
 PARALLELIZE = False
-BLIND       = False
+BLIND       = options.blind
 YEAR        = options.year
 LUMI        = {0 : 35867.+41530.+59740., 2016 : 35867., 2017: 41530., 2018 : 59740.,}
 FILE        = options.filename if len(options.filename) > 0 else None
@@ -59,7 +59,7 @@ def plot(var, cut, norm=False, nm1=False):
     ### Preliminary Operations ###
     treeRead = True if not FILE else False # Read from tree
     channel = cut
-    isBlind = BLIND and 'SR' in channel
+    isBlind = BLIND
     showSignal = False if 'SB' in cut or 'TR' in cut else True
 
     # Determine explicit cut

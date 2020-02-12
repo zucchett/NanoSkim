@@ -1,0 +1,2 @@
+/store/mc/RunIISummer16NanoAODv5/WWTo2L2Nu_DoubleScattering_13TeV-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/30000/08638209-55F1-9549-B558-CDD481E31B7D.root
+/store/mc/RunIISummer16NanoAODv5/WWTo2L2Nu_DoubleScattering_13TeV-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/30000/B82CB3C6-E33B-FF41-81E0-8B605BC66644.root

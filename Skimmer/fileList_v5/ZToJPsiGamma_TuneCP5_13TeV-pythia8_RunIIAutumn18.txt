@@ -1,0 +1,2 @@
+/store/mc/RunIIAutumn18NanoAODv5/ZToJPsiGamma_TuneCP5_13TeV-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v2/70000/869E8364-3E5D-6549-9701-A5977DACC1DE.root
+/store/mc/RunIIAutumn18NanoAODv5/ZToJPsiGamma_TuneCP5_13TeV-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v2/30000/2E87A076-F612-E64A-97D8-2E3FE5C4B59C.root

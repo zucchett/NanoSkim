@@ -1,0 +1,2 @@
+/store/mc/RunIISummer16NanoAODv5/WZG_TuneCUETP8M1_13TeV-amcatnlo-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/40000/4C142F3A-8EBC-2341-B2F8-117CFAD8BD15.root
+/store/mc/RunIISummer16NanoAODv5/WZG_TuneCUETP8M1_13TeV-amcatnlo-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/40000/176327E5-D41D-754A-93E7-EDD6B1DF7690.root

@@ -1,0 +1,2 @@
+/store/mc/RunIIAutumn18NanoAODv5/WWTo2L2Nu_DoubleScattering_13TeV-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v2/70000/58A2669E-0420-FD45-9C27-BC662A3E274C.root
+/store/mc/RunIIAutumn18NanoAODv5/WWTo2L2Nu_DoubleScattering_13TeV-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v2/40000/7EEEAEDA-08AA-4147-8648-E5F60CB88B01.root

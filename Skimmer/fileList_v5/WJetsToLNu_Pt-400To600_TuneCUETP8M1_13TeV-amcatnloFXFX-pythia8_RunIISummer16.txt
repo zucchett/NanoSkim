@@ -1,0 +1,1 @@
+/store/mc/RunIISummer16NanoAODv5/WJetsToLNu_Pt-400To600_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7_ext1-v1/70000/C70C16DA-2BE7-DA4C-A12A-95FFBF545924.root
