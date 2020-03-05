@@ -72,7 +72,9 @@ def run(s, ss, filename):
     outFile.Close()
 
 
-
+def merge(ss):
+    os.system("hadd -f " + tmpdir + '/' + ss + ".root " + tmpdir + '/' + ss + "/*.root > /dev/null")
+    return
 
 
 if __name__ == "__main__":
@@ -109,12 +111,17 @@ if __name__ == "__main__":
     
     # Merge outputs
     print "+ Micro-merging..."
+    poolMerger = multiprocessing.Pool(processes = ncpu)
     for s in data+back+sign:
         for j, ss in enumerate(sample[s]['files']):
             if year == 2016 and not ('Run2016' in ss or 'Summer16' in ss): continue
             if year == 2017 and not ('Run2017' in ss or 'Fall17' in ss): continue
             if year == 2018 and not ('Run2018' in ss or 'Autumn18' in ss): continue
-            os.system("hadd -f " + tmpdir + '/' + ss + ".root " + tmpdir + '/' + ss + "/*.root > /dev/null")
+            if not splitjobs: merge(ss)
+            else: poolMerger.apply_async(merge, args=(ss,))
+    # Wait for micro-merging jobs to finish
+    poolMerger.close()
+    poolMerger.join()
     
     print "+ Macro-merging [",  datetime.datetime.now().time(), "]"
     os.system("hadd -f " + output + " " + tmpdir + "/*.root > /dev/null")
