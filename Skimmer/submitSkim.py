@@ -11,24 +11,28 @@ parser = optparse.OptionParser(usage)
 parser.add_option("-f", "--filesPerJob", action="store", type=int, dest="nfiles", default=5)
 parser.add_option("-y", "--year", action="store", type="string", dest="year", default="")
 parser.add_option("-q", '--queue', action='store', type="string", dest="queue", default="local-cms-short")
+parser.add_option("-t", "--test", action="store_true", dest="test", default=False)
 parser.add_option("-v", "--verbose", action="store_true", dest="verbose", default=False)
 (options, args) = parser.parse_args()
 
 year = options.year
 nfiles = options.nfiles
 queue = options.queue
+test = options.test
 
+# Make the proxy visible on LSF nodes
+os.environ['X509_USER_PROXY'] = USERPROXY
 
 def runSampleLSF(s):
     outputDir = OUTDIR + "/" + s + "/"
-    command = "echo \"python $(pwd)/skim.py -l $(pwd)/" + FILELIST + "/" + s + ".txt -o " + outputDir + "\" | bsub -J " + s + " -oo " + LOGDIR + "/outfile_%J.txt -eo " + LOGDIR + "/errorfile_%J.txt -cwd " + LSFDIR + " -q " + queue + ""
-    print command
-    #os.system(command)
+    command = "echo \"python " + MAINDIR + "/skim.py -l " + MAINDIR + "/" + FILELIST + "/" + s + ".txt -o " + outputDir + "\" | bsub -J " + s + " -oo " + LOGDIR + "/outfile_%J.txt -eo " + LOGDIR + "/errorfile_%J.txt -cwd " + LSFDIR + " -q " + queue + ""
+    if not test: os.system(command)
+    else: print "\n", command
 
 
 def runFileLSF(s):
     outputDir = OUTDIR + "/" + s + "/"
-    os.system("rm -rf " + outputDir)
+    if not test: os.system("rm -rf " + outputDir)
     with open(FILELIST + "/" + s + ".txt", "r") as f:
         i = 0
         flist = ""
@@ -37,9 +41,9 @@ def runFileLSF(s):
         for f in lines:
             flist += f + ','
             if i % nfiles == 0 or i == last-1:
-                command = "echo \"python $(pwd)/skim.py -i " + flist + " -o " + outputDir + "\" | bsub -J " + s + " -oo " + LOGDIR + "/outfile_%J.txt -eo " + LOGDIR + "/errorfile_%J.txt -cwd " + LSFDIR + " -q " + queue + ""
-                # print "\n", command
-                os.system(command)
+                command = "echo \"python " + MAINDIR + "/skim.py -i " + flist + " -o " + outputDir + "\" | bsub -J " + s + " -oo " + LOGDIR + "/outfile_%J.txt -eo " + LOGDIR + "/errorfile_%J.txt -cwd " + LSFDIR + " -q " + queue + ""
+                if not test: os.system(command)
+                else: print "\n", command
                 flist = ""
             i += 1
 
@@ -52,7 +56,7 @@ for s in SAMPLES:
     if not s in EV or not s in XS:
         print "- ERROR: sample", s, "has no events or cross section information, skipping..."
         continue
-
+    if test: print "+ Submitting", s
     runFileLSF(s)
 
 
@@ -60,4 +64,4 @@ print "+ Done."
 
 
 
-# voms-proxy-init --voms cms --valid 168:00
+# voms-proxy-init --rfc --voms cms --valid 168:00

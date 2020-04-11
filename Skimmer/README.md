@@ -54,3 +54,7 @@ The events are categorized according to the following exclusive selections. The 
   - both electrons passing the `loose` wp (`Electron_cutBased >= 1`)
   - dielectron ivariant mass > 15 GeV
 
+
+## Run on LSF
+
+In order to run on nanoAOD files not stored on the Legnaro T2, the file prefix to prepend to the file name should be adjusted in `global_paths.py`. Additionally, in order to make the proxy visible when running on the LSF nodes, manually copy the proxy in the local directory on `/lustre`. The proxy location is reported each time the proxy is created and it is usually in `/tmp/x509up_u723`. Remember to update the path to this file in `global_paths.py`.

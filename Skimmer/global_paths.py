@@ -13,7 +13,7 @@ MAINDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/"
 TESTDIR = "outputTest/"
 
 # large enough storage space to hold the unskimmed primary ntuples produced directly from NanoAOD
-OUTDIR = "/lustre/cmswork/zucchett/Ntuple/v2/"
+OUTDIR = "/lustre/cmswork/zucchett/Skim/Temp/"
 
 # LSF working directory
 LSFDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/LSFWD/"
@@ -28,13 +28,16 @@ CMSSWDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/"
 COMBINEDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/HiggsAnalysis/CombinedLimit/"
 
 # File prefix to prepend to the file name
-#FILESITE = "root://xrootd-cms.infn.it/"
 #FILESITE = "root://cms-xrd-global.cern.ch/"
-FILESITE = "dcap://t2-srm-02.lnl.infn.it/pnfs/lnl.infn.it/data/cms/"
+#FILESITE = "root://xrootd-cms.infn.it/"
+FILESITE = "root://xrootd-cms.infn.it//"
+#FILESITE = "dcap://t2-srm-02.lnl.infn.it/pnfs/lnl.infn.it/data/cms/"
 
 # Local file prefix
 LOCALSITE = "root://xrootd-cms.infn.it/"
 
+# Grid user proxy to run on files outside T2
+USERPROXY = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/x509up_u723"
 
 
 if __name__ == "__main__":
