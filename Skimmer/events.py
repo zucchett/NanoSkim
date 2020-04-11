@@ -13,6 +13,7 @@ if not os.path.exists(FILELIST): os.mkdir(FILELIST)
 
 for s in samples:
     if len(s) == 0: continue
+    if s.startswith('#'): continue
     sampleName = getNameFromDAS(s)
     if sampleName in EV.keys():
         continue
@@ -25,7 +26,7 @@ for s in samples:
 #        sample = s.replace('/', '_')
 #        if sample.startswith('_'): sample = sample[1:]
     
-    
+
 #    # get number of events
 #    query = 'das_client --limit=0 --query="summary dataset=%s"' % (s,)
 #    #print "Executing ", query
