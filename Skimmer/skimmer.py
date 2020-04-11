@@ -109,6 +109,8 @@ class Skimmer(Module):
         
         self.isMC = not "Run201" in self.fileName
         
+        print "+ Opening file", self.fileName
+        
         # b-tagging working points for DeepCSV
         # https://twiki.cern.ch/twiki/bin/viewauth/CMS/BtagRecommendation2016Legacy
         # https://twiki.cern.ch/twiki/bin/viewauth/CMS/BtagRecommendation94X
@@ -215,7 +217,21 @@ class Skimmer(Module):
             GenVpt = self.VptCorr.getGenVpt(event) if not self.VptCorr is None else 0.
             
             # MC stitching weight
-            if 'WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8' in self.fileName and 'Summer16' in self.fileName and event.LHE_Vpt > 100.: stitchWeight = 0.
+            
+            # W+jets inclusive and exclusive
+            if 'WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8' in self.fileName and 'Summer16' in self.fileName:
+                if event.LHE_Vpt > 100.: stitchWeight = 0.
+            
+            # Z+jets and Z+gamma
+            if self.fileName.startswith('ZGTo2LG_TuneCUETP8M1') or self.fileName.startswith('ZGToLLG_01J_5f_TuneCP5') or self.fileName.startswith('DYJetsToLL_M-50_Tune'):
+                nGenPhotons = 0
+                photonPtTh = 15. if self.fileName.startswith('ZGTo2LG_TuneCUETP8M1') or self.fileName.startswith('DYJetsToLL_M-50_TuneCUETP8M1') else 20.
+                for i in range(event.nGenPart):
+                    if GenPart_pdgId[i] == 22 and TMath.Odd(GenPart_statusFlags[i]) and GenPart_pt > photonPtTh:
+                        nGenPhotons += 1
+                if self.fileName.startswith('ZG') and nGenPhotons <= 0: stitchWeight = 0.
+                if self.fileName.startswith('DYJetsToLL_M-50') and nGenPhotons >= 1: stitchWeight = 0.
+            
             
             # PU weight
             puWeight = self.puTool.getWeight(event.Pileup_nTrueInt)
