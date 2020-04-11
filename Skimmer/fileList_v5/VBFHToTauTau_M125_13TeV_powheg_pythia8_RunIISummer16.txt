@@ -1,0 +1,2 @@
+/store/mc/RunIISummer16NanoAODv5/VBFHToTauTau_M125_13TeV_powheg_pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/120000/53CE7201-8D35-9A42-8C88-ADB0A8DD3059.root
+/store/mc/RunIISummer16NanoAODv5/VBFHToTauTau_M125_13TeV_powheg_pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/120000/D39C088F-6E1B-AE46-8395-1A02E149A399.root

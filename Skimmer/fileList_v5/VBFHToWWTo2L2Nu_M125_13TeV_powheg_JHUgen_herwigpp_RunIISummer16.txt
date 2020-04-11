@@ -1,0 +1,1 @@
+/store/mc/RunIISummer16NanoAODv5/VBFHToWWTo2L2Nu_M125_13TeV_powheg_JHUgen_herwigpp/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/50000/7335FABC-DFB2-5243-89CD-E64736869762.root
