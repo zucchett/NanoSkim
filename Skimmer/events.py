@@ -22,8 +22,7 @@ for s in samples:
     if len(s) == 0: continue
     if s.startswith('#'): continue
     sampleName = getNameFromDAS(s)
-    if sampleName in EV.keys():
-        continue
+
     if "Run201" in sampleName:
         EV[sampleName] = 1.
         continue

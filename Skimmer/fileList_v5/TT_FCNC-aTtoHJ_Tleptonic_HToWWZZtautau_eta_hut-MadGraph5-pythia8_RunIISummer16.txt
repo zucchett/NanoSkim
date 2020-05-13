@@ -1,0 +1,2 @@
+/store/mc/RunIISummer16NanoAODv5/TT_FCNC-aTtoHJ_Tleptonic_HToWWZZtautau_eta_hut-MadGraph5-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/110000/1704C42B-DCE4-1448-AAB0-C8764EAD2D99.root
+/store/mc/RunIISummer16NanoAODv5/TT_FCNC-aTtoHJ_Tleptonic_HToWWZZtautau_eta_hut-MadGraph5-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/110000/2AC0E43E-6026-3E46-9930-497E1DCAFDD6.root
