@@ -33,11 +33,14 @@ if len(options.list) > 0:
 
 
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7_ext2-v1/120000/BD54F09C-7429-9547-A169-467F4AFB9606.root"] #["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAOD/TTJets_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/NANOAODSIM/PUMoriond17_05Feb2018_94X_mcRun2_asymptotic_v2-v1/40000/2CE738F9-C212-E811-BD0E-EC0D9A8222CE.root"]
+#fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/ZGTo2LG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7_ext1-v1/260000/B2D94295-780F-AA4C-9A98-FB682EC1F910.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIIAutumn18NanoAODv5/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19_ext3-v1/20000/8CC8B22B-6E75-F648-97DA-0ACB3AB5DB98.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/ZToJPsiGamma-TuneCUETP8M1_13TeV-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v2/20000/7A2A12E7-B35B-2B40-930A-D89F0FCA0F98.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/100000/FAB838BB-6F66-6B4A-B772-A1B511F28ECB.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/70000/9AB2845B-462E-8E42-8605-84606FB59047.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/70000/A03EC876-43DF-8841-BD98-5E345C766D5C.root"]
+#fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIIAutumn18NanoAODv5/WpWpJJ_EWK-QCD_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/40000/D2100A81-AF39-EE43-A57A-F2CCA607A38C.root"]
+#fileList = ["root://xrootd-cms.infn.it///store/mc/RunIIAutumn18NanoAODv5/GluGluHToTauTau_M125_13TeV_powheg_pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/130000/3D93C172-4F4A-3347-A6C0-720890E6CF19.root"]
 #preselection="Jet_pt[0] > 250"
 preselection = None
 jsonFile = None
@@ -59,4 +62,5 @@ print "+ Done."
 
 #def __init__(self,outputDir,inputFiles,cut=None,branchsel=None,modules=[],compression="LZMA:9",friend=False,postfix=None,jsonInput=None,noOut=False,justcount=False,provenance=False,haddFileName=None,fwkJobReport=False,histFileName=None,histDirName=None,outputbranchsel=None,maxEntries=None,firstEntry=0,prefetch=False,longTermCache=False):
 
-# voms-proxy-init --voms cms --valid 168:00
+# voms-proxy-init --rfc --voms cms --valid 168:00
+

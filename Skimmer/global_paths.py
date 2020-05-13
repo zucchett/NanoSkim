@@ -37,7 +37,8 @@ FILESITE = "root://xrootd-cms.infn.it//"
 LOCALSITE = "root://xrootd-cms.infn.it/"
 
 # Grid user proxy to run on files outside T2
-USERPROXY = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/x509up_u723"
+TEMPPROXY = "/tmp/x509up_u723"
+USERPROXY = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/x509up_u723" # this location HAS TO BE on lustre
 
 
 if __name__ == "__main__":

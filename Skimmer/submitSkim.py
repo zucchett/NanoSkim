@@ -23,7 +23,8 @@ queue = options.queue
 test = options.test
 
 # Make the proxy visible on LSF nodes
-os.environ['X509_USER_PROXY'] = USERPROXY
+os.system("cp " + TEMPPROXY + " " + USERPROXY) # Copy certificate to lustre
+os.environ['X509_USER_PROXY'] = USERPROXY # Set envirnment variable
 
 def runSampleLSF(s):
     outputDir = OUTDIR + "/" + s + "/"
