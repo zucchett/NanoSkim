@@ -58,3 +58,20 @@ The events are categorized according to the following exclusive selections. The 
 ## Run on LSF
 
 In order to run on nanoAOD files not stored on the Legnaro T2, the file prefix to prepend to the file name should be adjusted in `global_paths.py`. Additionally, in order to make the proxy visible when running on the LSF nodes, manually copy the proxy in the local directory on `/lustre`. The proxy location is reported each time the proxy is created and it is usually in `/tmp/x509up_u723`. Remember to update the path to this file in `global_paths.py`.
+
+
+## Add new samples
+
+First, make sure to login to the grid: `voms-proxy-init --voms cms --valid 168:00`
+
+1. Add the full path of the new files on `fileList_*.txt`, as taken from DAS.
+
+2. Create file list: `python lists.py`.  The option `-f` specifies a string to filter the samples.
+
+3. Count events to determine the normalization: `python events.py`.  The option `-f` specifies a string to filter the samples. At the moment, the dictionary is printed to screen and should be checked manually before copying the number of events to the dictionary `EV` in `utils.py`.
+
+4. Report the cross sections in `utils.py` in the appropriate dictionary `XS`, by using the same keys as for the events number. Copy the same keys in an ordered manner in the `SAMPLES` list.
+
+5. Make sure that the target and work directories are empty. Then submit the jobs with `python submitSkim.py`. The option `-f` specifies a string to filter the samples.
+
+
