@@ -5,9 +5,16 @@ from global_paths import *
 from ROOT import TH1, TH1F, TH1D, TFile, TTree, TChain
 from utils import *
 
+import optparse
+usage = 'usage: %prog [options]'
+parser = optparse.OptionParser(usage)
+parser.add_option('-f', '--filter', action='store', type='string', dest='filter', default="")
+(options, args) = parser.parse_args()
+
 EV = {}
 
 samples = open(FILELIST+".txt", "r").read().splitlines()
+if len(options.filter) > 0: samples = [x for x in samples if options.filter in x]
 
 if not os.path.exists(FILELIST): os.mkdir(FILELIST)
 
@@ -75,6 +82,7 @@ for s in samples:
 #                nfiles += 1
 #                nEv += genEv
 
+    # Write to file
 #with open(MAINDIR + "/" + FILELIST + "/Events.txt", "w") as f:
 #    for s, ev in EV.iteritems():
 #        f.write("%s\t%d\n" % (s, ev, ))

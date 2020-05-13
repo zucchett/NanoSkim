@@ -5,15 +5,22 @@ import re
 import datetime
 import subprocess
 import itertools
-
 from utils import *
 
-samples = open(listName+".txt", "r").read().splitlines()
+import optparse
+usage = 'usage: %prog [options]'
+parser = optparse.OptionParser(usage)
+parser.add_option('-f', '--filter', action='store', type='string', dest='filter', default="")
+(options, args) = parser.parse_args()
 
-if not os.path.exists(listName): os.mkdir(listName)
+samples = open(FILELIST+".txt", "r").read().splitlines()
+if len(options.filter) > 0: samples = [x for x in samples if options.filter in x]
+
+if not os.path.exists(FILELIST): os.mkdir(FILELIST)
 
 for s in samples:
     if len(s) == 0: continue
+    if s.startswith('#'): continue
 #    if not '/' in s: continue
 #    dataset, campaign, format = s.split('/')[1:]
     
@@ -24,8 +31,8 @@ for s in samples:
     outputList = output.split(os.linesep)
     fileList = [x for x in outputList if x.endswith(".root")]
     
-    fileName = getNameFromDAS(s)#listName+"/"+dataset+"_"+campaign+".txt"
-    with open(listName + "/" + fileName + ".txt", "w") as f:
+    fileName = getNameFromDAS(s)#FILELIST+"/"+dataset+"_"+campaign+".txt"
+    with open(FILELIST + "/" + fileName + ".txt", "w") as f:
         for l in fileList:
             f.write("%s\n" % l)
     print " - Wrote", len(fileList), "files for", fileName
