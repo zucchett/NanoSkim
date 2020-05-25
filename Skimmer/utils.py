@@ -53,7 +53,7 @@ SAMPLES = [
   'Charmonium_Run2018A-Nano1June2019-v1',
   'Charmonium_Run2018B-Nano1June2019-v1',
   'Charmonium_Run2018C-Nano1June2019-v1',
-  'Charmonium_Run2018D-Nano1June2019_ver2-v1' : 1.0 ,
+  'Charmonium_Run2018D-Nano1June2019_ver2-v1',
   'DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_RunIISummer16',
   'DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIIFall17',
   'DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8_RunIIAutumn18',
