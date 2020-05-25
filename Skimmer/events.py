@@ -87,7 +87,8 @@ for s in samples:
 #        f.write("%s\t%d\n" % (s, ev, ))
 #    l.close()
 
-print EV
+for k, v in sorted(EV.items()):
+    print "  '" + k + "' :", v, ","
 
 print "+ Done."
 
