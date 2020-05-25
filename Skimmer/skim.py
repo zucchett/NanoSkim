@@ -40,7 +40,7 @@ if len(options.list) > 0:
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/QCD_HT100to200_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/70000/9AB2845B-462E-8E42-8605-84606FB59047.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16NanoAODv5/WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/PUMoriond17_Nano1June2019_102X_mcRun2_asymptotic_v7-v1/70000/A03EC876-43DF-8841-BD98-5E345C766D5C.root"]
 #fileList = ["root://cms-xrd-global.cern.ch//store/mc/RunIIAutumn18NanoAODv5/WpWpJJ_EWK-QCD_TuneCP5_13TeV-madgraph-pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/40000/D2100A81-AF39-EE43-A57A-F2CCA607A38C.root"]
-fileList = ["root://xrootd-cms.infn.it///store/mc/RunIIAutumn18NanoAODv5/GluGluHToTauTau_M125_13TeV_powheg_pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/130000/3D93C172-4F4A-3347-A6C0-720890E6CF19.root"]
+#fileList = ["root://xrootd-cms.infn.it///store/mc/RunIIAutumn18NanoAODv5/GluGluHToTauTau_M125_13TeV_powheg_pythia8/NANOAODSIM/Nano1June2019_102X_upgrade2018_realistic_v19-v1/130000/3D93C172-4F4A-3347-A6C0-720890E6CF19.root"]
 #preselection="Jet_pt[0] > 250"
 preselection = None
 jsonFile = None
