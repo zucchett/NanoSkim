@@ -145,7 +145,7 @@ class SameSign(Module):
         self.isLO = abs(self.nevents % 1) < 1.e-6 # if True, the event count is integer, so the weight should be normalized (+1)
         
         print "+ Module parameters: isMC", self.isMC, ", year", self.year, ", lumi", self.lumi, "pb"
-        print "+ Sample", self.sampleName, ", XS", self.xs, ", events", self.nevents
+        print "+ Sample", self.sampleName, ("is LO" if self.isLO else "is not LO"), ", XS", self.xs, ", events", self.nevents
         print "+ Weight", self.lumiWeight
         if self.isMC and self.isLO: print "+ Sample is LO, gen weight will be set to 1"
 #        self.puTool = PileupWeightTool(year = year) if self.isMC else None

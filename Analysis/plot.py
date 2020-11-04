@@ -52,6 +52,7 @@ FILE        = options.filename if len(options.filename) > 0 else None
 ########## SAMPLES ##########
 data = ["data_obs"]
 back = ["Higgs", "WmWm", "WpWp", "VVV", "ZZ", "WZ", "WW", "TTTT", "TTZ", "TTW", "ST", "TTbar", "VGamma", "WJetsToLNu", "DYJetsToLL", "QCD"]
+#back = ["VGamma", "DYJetsToLL"]
 sign = []
 ########## ######## ##########
 
@@ -94,7 +95,7 @@ def plot(var, cut, norm=False, nm1=False):
             if YEAR == 2018 and not ('Run2018' in ss or 'Autumn18' in ss): continue
             if treeRead: # Project from tree
     #            hist[s] = projectLoop(s, pd, var, cutstring)
-                p = multiprocessing.Process(target=parallelProject, args=(queue, s, ss, var, cutstring, ))
+                p = multiprocessing.Process(target=parallelProject, args=(queue, s, ss, variable[var], cutstring, ))
                 jobs.append(p)
                 p.start()
             else: # Histogram written to file
@@ -233,7 +234,7 @@ def plot(var, cut, norm=False, nm1=False):
     c1.Update()
     
     if True: #gROOT.IsBatch():
-        varname = var.replace('.', '_').replace('()', '')
+        varname = var.replace('[', '_').replace(']', '').replace('.', '_').replace('()', '')
         if not os.path.exists("plots/"+channel): os.makedirs("plots/"+channel)
         c1.Print("plots/"+channel+"/"+varname+".png")
         c1.Print("plots/"+channel+"/"+varname+".pdf")

@@ -7,9 +7,10 @@ from ROOT import TFile, TChain, TTree, TCut, TH1, TH1D, TH1F, TH2F, THStack, TGr
 from ROOT import TStyle, TCanvas, TPad
 from ROOT import TLegend, TLatex, TText, TLine, TBox, TMath
 
-from samples import sample
-from variables import variable
-NTUPLEDIR   = "/lustre/cmswork/zucchett/Ntuple/v2/"
+#from samples import sample
+#from variables import variable
+#NTUPLEDIR   = "/lustre/cmsdata/zucchett/SameSign/Gruppo2/"
+NTUPLEDIR   = "/lustre/cmsdata/zucchett/Higgs/v0/"
 
 ##################
 # ANALYSIS UTILS #
@@ -18,8 +19,8 @@ NTUPLEDIR   = "/lustre/cmswork/zucchett/Ntuple/v2/"
 
 def project(s, pd, var, cut):
 
-    hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
-    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title']+";Events;"+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
+    hist = TH1F(s, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), var['nbins'], var['min'], var['max'])
+    if var['nbins'] <= 0: hist = TH1F(s, ";"+var['title']+";Events;"+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), len(var['bins'])-1, array('f', var['bins']))
     hist.Sumw2()
     
     nfiles = 0
@@ -31,23 +32,18 @@ def project(s, pd, var, cut):
                     tree.Add(NTUPLEDIR + '/' + ss + '/' + f)
                     nfiles += 1
     print "Projecting", s, "from", nfiles, "files"
-    tree.Project(s, var, cut)
+    tree.Project(s, var['var'], cut)
     hist.SetDirectory(0)
 #    tree.Draw("%s>>%s" % (var, s), cut, "goff")
 #    hist = gDirectory.Get(s)
     if not tree.GetTree()==None: hist.SetOption("%s" % tree.GetTree().GetEntriesFast())
-    hist.Scale(sample[s]['weight'] if hist.Integral() >= 0 else 0)
-    hist.SetFillColor(sample[s]['fillcolor'])
-    hist.SetFillStyle(sample[s]['fillstyle'])
-    hist.SetLineColor(sample[s]['linecolor'])
-    hist.SetLineStyle(sample[s]['linestyle'])
     return hist
 
 
 def projectLoop(s, pd, var, cut, verbose=True):
 
-    hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
-    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
+    hist = TH1F(s, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), var['nbins'], var['min'], var['max'])
+    if var['nbins'] <= 0: hist = TH1F(s, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), len(var['bins'])-1, array('f', var['bins']))
     hist.Sumw2()
     hist.SetDirectory(0)
     
@@ -60,28 +56,63 @@ def projectLoop(s, pd, var, cut, verbose=True):
                 tmpHist = hist.Clone(s + "_" + f)
                 tmpHist.Reset()
                 tree = tmpFile.Get("Events")
-                tree.Project(s + "_" + f, var, cut)
+                tree.Project(s + "_" + f, var['var'], cut)
                 hist.Add(tmpHist)
                 tmpFile.Close()
                 if verbose: print ' + ', ss[:25], '\t', nfiles, '\r',
                 nfiles += 1
         if verbose: print ''
         else: print '+ ', ss[:20], '\t', nfiles
-    hist.Scale(sample[s]['weight'] if hist.Integral() >= 0 else 0)
-    hist.SetFillColor(sample[s]['fillcolor'])
-    hist.SetFillStyle(sample[s]['fillstyle'])
-    hist.SetLineColor(sample[s]['linecolor'])
-    hist.SetLineStyle(sample[s]['linestyle'])
     return hist
+
+
+def loopProject(s, ss, var, cut, verbose=True):
+
+    hist = TH1F(ss, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), var['nbins'], var['min'], var['max'])
+    if var['nbins'] <= 0: hist = TH1F(ss, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), len(var['bins'])-1, array('f', var['bins']))
+    hist.Sumw2()
+    hist.SetOption(s)
+    hist.SetDirectory(0)
+    
+    nfiles = 0
+    for f in os.listdir(NTUPLEDIR + '/' + ss):
+        if not f.endswith(".root"): continue
+        
+        tmpFile = TFile(NTUPLEDIR + '/' + ss + '/' + f, "READ")
+        tree = tmpFile.Get("Events")
+        tmpHist = hist.Clone(ss + "_" + f)
+        tmpHist.Reset()
+        print tmpFile.ls()
+        tree.Project(ss + "_" + f, var['var'], cut)
+        #tree.Draw(var['var'] + ">>" + ss + "_" + f, cut, "goff")
+        hist.Add(tmpHist)
+        tmpFile.Close()
+        nfiles += 1
+    if verbose: print '+ ', ss[:25], ' '*10, nfiles
+    return hist
+    
 
 
 def parallelProject(queue, s, ss, var, cut, verbose=True):
 
-    hist = TH1F(ss, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), variable[var]['nbins'], variable[var]['min'], variable[var]['max'])
-    if variable[var]['nbins'] <= 0: hist = TH1F(s, ";"+variable[var]['title']+";Events;"+('logx' if variable[var]['logx'] else '')+('logy' if variable[var]['logy'] else ''), len(variable[var]['bins'])-1, array('f', variable[var]['bins']))
+    hist = TH1F(ss, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), var['nbins'], var['min'], var['max'])
+    if var['nbins'] <= 0: hist = TH1F(ss, ";"+var['title']+";Events;"+('logx' if var['logx'] else '')+('logy' if var['logy'] else ''), len(var['bins'])-1, array('f', var['bins']))
     hist.Sumw2()
     hist.SetOption(s)
     hist.SetDirectory(0)
+    
+    
+#    if ss.startswith('ZGTo2LG_') or ss.startswith('ZGToLLG_'): cut += "*((Sum$(GenPart_pdgId==22 && GenPart_statusFlags==0 && GenPart_pt>15. && abs(GenPart_eta)<2.6)>0 && Sum$((abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13 || abs(GenPart_pdgId)==15) && GenPart_statusFlags==0 && GenPart_pt>15.)>=2))"
+#    if ss.startswith('DYJetsToLL_M-50_TuneC'): cut += "*(!(Sum$(GenPart_pdgId==22 && GenPart_statusFlags==0 && GenPart_pt>15. && abs(GenPart_eta)<2.6)>0 && Sum$((abs(GenPart_pdgId)==11 || abs(GenPart_pdgId)==13 || abs(GenPart_pdgId)==15) && GenPart_statusFlags==0 && GenPart_pt>15.)>=2))"
+#    '( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 && Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )'
+#    
+#    if ss.startswith('ZGTo2LG_') or ss.startswith('ZGToLLG_'): cut += "*(Sum$(LHEPart_pdgId==22 && abs(LHEPart_eta)<2.6 && LHEPart_pt>15.)>0)"
+#    if ss.startswith('DYJetsToLL_M-50_TuneC'): cut += "*(Sum$(LHEPart_pdgId==22 && abs(LHEPart_eta)<2.6 && LHEPart_pt>15.)==0)"
+    
+#    if ss.startswith('ZGTo2LG_TuneCUETP8M1'): cut += "*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt > 15.)>0)"
+#    if ss.startswith('ZGToLLG_01J_5f_TuneCP5'): cut += "*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt > 20.)>0)"
+#    if ss.startswith('DYJetsToLL_M-50_TuneCUETP8M1'): cut += "*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt > 15.)==0)"
+#    if ss.startswith('DYJetsToLL_M-50_TuneCP5'): cut += "*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt > 20.)==0)"
     
     nfiles = 0
     for f in os.listdir(NTUPLEDIR + '/' + ss):
@@ -90,16 +121,11 @@ def parallelProject(queue, s, ss, var, cut, verbose=True):
         tmpHist = hist.Clone(ss + "_" + f)
         tmpHist.Reset()
         tree = tmpFile.Get("Events")
-        tree.Project(ss + "_" + f, var, cut)
+        tree.Project(ss + "_" + f, var['var'], cut)
         hist.Add(tmpHist)
         tmpFile.Close()
         nfiles += 1
     if verbose: print '+ ', ss[:25], ' '*10, nfiles
-    hist.Scale(sample[s]['weight'] if hist.Integral() >= 0 else 0)
-    hist.SetFillColor(sample[s]['fillcolor'])
-    hist.SetFillStyle(sample[s]['fillstyle'])
-    hist.SetLineColor(sample[s]['linecolor'])
-    hist.SetLineStyle(sample[s]['linestyle'])
     queue.put( hist )
     
 
@@ -143,16 +169,17 @@ def readaddhist(s, pd, var, directory):
 
 
 def printTable(hist, sign=[]):
-    samples = [x for x in hist.keys() if not 'data' in x and not 'BkgSum' in x and not x in sign]
+    
+    samples = [x for x in sorted(hist, key=lambda h : hist[h].Integral(), reverse=True) if not 'data' in x and not 'BkgSum' in x and not x in sign]
     print "Sample                  Events          Entries         %"
     print "-"*60
     for i, s in enumerate(['data_obs']+samples+['BkgSum']):
         if i==1 or i==len(samples)+1: print "-"*60
-        print "%-20s" % s, "\t%-10.2f" % hist[s].Integral(), "\t%-10.0f" % (hist[s].GetEntries()-2), "\t%-10.2f" % (100.*hist[s].Integral()/hist['BkgSum'].Integral()) if hist['BkgSum'].Integral() > 0 else 0
+        print "%-20s" % s, "\t%-10.2f" % hist[s].Integral(), "\t%-10.0f" % (hist[s].GetEntries()), "\t%-10.2f" % (100.*hist[s].Integral()/hist['BkgSum'].Integral()) if hist['BkgSum'].Integral() > 0 else 0
     print "-"*60
     for i, s in enumerate(sign):
         #if not sample[s]['plot']: continue
-        print "%-20s" % s, "\t%-10.2f" % hist[s].Integral(), "\t%-10.0f" % (hist[s].GetEntries()-2), "\t%-10.2f" % 0.
+        print "%-20s" % s, "\t%-10.2f" % hist[s].Integral(), "\t%-10.0f" % (hist[s].GetEntries()), "\t%-10.2f" % 0.
     print "-"*60
 
 

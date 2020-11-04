@@ -70,7 +70,7 @@ for s in samples:
             print ' + ', sampleName[:25], ' '*10, nfiles, ' '*10, '\r',
     EV[sampleName] = genEv
     print ''
-    print "+ Sample", sampleName[:25], "has", genEv, "events"
+    print "+ Sample", sampleName[:25], "has", '{0:f}'.format(genEv), "events"
 #                tmpf = TFile("root://cms-xrd-global.cern.ch/" + ff, "READ")
 #                hist = TH1F(ff, "", 1, 0, 0)
 #                tree = tmpf.Get("Events")

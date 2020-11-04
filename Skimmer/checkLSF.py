@@ -7,12 +7,14 @@ import optparse
 usage = "usage: %prog [options]"
 parser = optparse.OptionParser(usage)
 
-parser.add_option("-q", '--queue', action='store', type="string", dest="queue", default="local-cms-short")
-parser.add_option("-r", "--resubmit", action="store_true", dest="resubmit", default=False)
-parser.add_option("-v", "--verbose", action="store_true", dest="verbose", default=False)
+parser.add_option("-q", '--queue', action='store', type="string", dest="queue", default="local-cms-short", help="Specify submission queue")
+parser.add_option("-l", "--local", action="store_true", dest="local", default=False, help="Resubmit as local jobs")
+parser.add_option("-r", "--resubmit", action="store_true", dest="resubmit", default=False, help="Resubmit to LSF queue")
+parser.add_option("-v", "--verbose", action="store_true", dest="verbose", default=False, help="Increase verbosity")
 (options, args) = parser.parse_args()
 
 queue = options.queue
+local = options.local
 resubmit = options.resubmit
 
 ndone, nfail, nempty, nresub = 0, 0, 0, 0
@@ -51,11 +53,17 @@ for f in os.listdir(LOGDIR):
                 #os.system("rm -rf " + targetdir)
                 os.system(recommand)
                 nresub += 1
-
+            elif local:
+                os.system(command + " &> " + LOGDIR + "/localfile_" + number + ".txt &")
+                os.system("rm " + LOGDIR + "/*" + number + "*")
+                os.system("rm -rf " + LSFDIR + "/*" + number + "*")
+                nresub += 1
+                
+            
     r.close()
         
 
 print "Number of successful / failed / empty jobs:", ndone, '/', nfail, '/', nempty, '(', float(ndone)/(ndone + nfail + nempty)*100., '%)'
-if resubmit: print "Resubmitted", nresub, "jobs"
+if resubmit or local: print "Resubmitted", nresub, "jobs"
 
 # voms-proxy-init --rfc --voms cms --valid 168:00

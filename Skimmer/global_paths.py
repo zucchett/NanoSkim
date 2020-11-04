@@ -4,7 +4,7 @@
 ### Auxiliary file defining all global paths for the analysis to work.
 ###
 
-FILELIST = "fileList_v5"
+FILELIST = "fileList_v7"
 
 ## primary work directory where the analysis scripts are located
 MAINDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/"

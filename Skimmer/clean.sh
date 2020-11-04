@@ -4,4 +4,4 @@
 
 #rm -rf /lustre/cmswork/zucchett/Ntuple/v2/*
 rm -rf LSFWD/*
-rm LSF/*
+rm -rf LSF/*
