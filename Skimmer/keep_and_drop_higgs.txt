@@ -1,0 +1,22 @@
+# this is a comment
+#drop * # start with all
+#keep Electron*
+#keep Muon*
+#keep Jet*
+drop HTXS*
+drop CorrT1*
+#drop HLT*
+#drop L1*
+drop FatJet*
+drop GenJet*
+drop SubGenJet*
+#drop GenPart*
+drop GenVisTau*
+drop fixedGridRho*
+drop GenDressedLepton*
+drop SubJet*
+drop SV*
+drop TrigObj*
+#drop Flag*
+#drop Photon*
+#drop Tau*
