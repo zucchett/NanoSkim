@@ -6,11 +6,11 @@
 
 #### As part of a CMSSW release (recommended):
  
-On a t2-ui-* or equivalent machine, install a recent CMSSW release (`CMSSW_10_2_6`, for instance):
+On a t2-ui-* or equivalent machine, install a recent CMSSW release (`CMSSW_10_2_13`, for instance):
 
-`cmsrel CMSSW_10_2_6`
+`cmsrel CMSSW_10_2_13`
 
-`cd CMSSW_10_2_6/src/`
+`cd CMSSW_10_2_13/src/`
 
 `cmsenv`
 
