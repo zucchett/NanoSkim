@@ -109,6 +109,9 @@ class Higgs(Module):
         self.out.branch("cosThetaStar", "F")
         self.out.branch("cosTheta1", "F")
         self.out.branch("phi1", "F")
+        self.out.branch("genCosThetaStar", "F")
+        self.out.branch("genCosTheta1", "F")
+        self.out.branch("genPhi1", "F")
         self.out.branch("lumiWeight", "F")
         self.out.branch("lheWeight", "F")
         self.out.branch("stitchWeight", "F")
@@ -201,6 +204,7 @@ class Higgs(Module):
         isSingleMuonTrigger, isSingleMuonPhotonTrigger, isSingleMuonNoFiltersPhotonTrigger, isDoubleMuonTrigger, isDoubleMuonPhotonTrigger, isJPsiTrigger, isDisplacedTrigger = False, False, False, False, False, False, False
         nCleanElectron, nCleanMuon, nCleanTau, nCleanPhoton, nCleanJet, nCleanBTagJet, HT30 = 0, 0, 0, 0, 0, 0, 0
         cosThetaStar, cosTheta1, phi1 = -2., -2., -4.
+        genCosThetaStar, genCosTheta1, genPhi1 = -2., -2., -4.
 
         for t in self.SingleMuonTriggers:
             if hasattr(event, t) and getattr(event, t): isSingleMuonTrigger = True
@@ -263,9 +267,16 @@ class Higgs(Module):
                 self.hists["genMuon2_pt"].Fill(min(genMuon1.Pt(), genMuon2.Pt()), lheWeight)
                 self.hists["genMuon2_eta"].Fill(genMuon2.Eta(), lheWeight)
                 
-                self.hists["genCosThetaStar"].Fill(self.returnCosThetaStar(genH, genJPsi), lheWeight)
-                self.hists["genCosTheta1"].Fill(self.returnCosTheta1(genJPsi, genMuon1, genMuon2, genPhoton), lheWeight)
-                self.hists["genPhi1"].Fill(self.returnPhi1(genH, genMuon1, genMuon2), lheWeight)
+                genCosThetaStar, genCosTheta1, genPhi1 = self.returnCosThetaStar(genH, genJPsi), self.returnCosTheta1(genJPsi, genMuon1, genMuon2, genPhoton), self.returnPhi1(genH, genMuon1, genMuon2)
+                self.hists["genCosThetaStar"].Fill(genCosThetaStar, lheWeight)
+                self.hists["genCosTheta1"].Fill(genCosTheta1, lheWeight)
+                self.hists["genPhi1"].Fill(genPhi1, lheWeight)
+                
+                # Reweight
+                if self.isSignal:
+                    stitchWeight = 3./4. * (1. + genCosTheta1**2) # Transverse polarization (H, Z)
+                    if 'ZToJPsiG' in self.sampleName:
+                        topWeight = 3./2. * (1. - genCosTheta1**2) # Longitudinal polarization (Z)
     
                 # Acceptance
                 if abs(genPhoton.Eta()) < 2.5:
@@ -275,7 +286,7 @@ class Higgs(Module):
                         if abs(genMuon2.Eta()) < 2.4:
                             self.hists["Acceptance"].Fill(3, lheWeight)
                             self.hists["Cutflow"].Fill(1, lheWeight)
-                            if genPhoton.Pt() > 15. and genMuon1.Pt() > 10. and genMuon2.Pt() > 5.:
+                            if genPhoton.Pt() > 15. and genMuon1.Pt() > 5. and genMuon2.Pt() > 5.:
                                 self.hists["Acceptance"].Fill(4, lheWeight)
 
         # Muons
@@ -294,6 +305,8 @@ class Higgs(Module):
         muon1, muon2 = TLorentzVector(), TLorentzVector()
         muon1.SetPtEtaPhiM(event.Muon_pt[m1], event.Muon_eta[m1], event.Muon_phi[m1], event.Muon_mass[m1])
         muon2.SetPtEtaPhiM(event.Muon_pt[m2], event.Muon_eta[m2], event.Muon_phi[m2], event.Muon_mass[m2])
+        muonP = muon1 if event.Muon_charge[m1] > event.Muon_charge[m2] else muon2
+        muonM = muon1 if event.Muon_charge[m1] < event.Muon_charge[m2] else muon2
         muon1v2, muon2v2 = TVector2(muon1.Px(), muon1.Py()), TVector2(muon2.Px(), muon2.Py())
         
         jpsi = muon1 + muon2
@@ -350,8 +363,8 @@ class Higgs(Module):
         metPlusPhotonDPhi = abs(met.DeltaPhi(metPlusPhoton))
         
         cosThetaStar = self.returnCosThetaStar(h, jpsi)
-        cosTheta1 = self.returnCosTheta1(jpsi, muon1, muon2, photon)
-        phi1 = self.returnPhi1(h, muon1, muon2)
+        cosTheta1 = self.returnCosTheta1(jpsi, muonP, muonM, photon)
+        phi1 = self.returnPhi1(h, muonP, muonM)
 
         # Weights
 #        if self.isMC:
@@ -463,6 +476,9 @@ class Higgs(Module):
         self.out.fillBranch("cosThetaStar", cosThetaStar)
         self.out.fillBranch("cosTheta1", cosTheta1)
         self.out.fillBranch("phi1", phi1)
+        self.out.fillBranch("genCosThetaStar", genCosThetaStar)
+        self.out.fillBranch("genCosTheta1", genCosTheta1)
+        self.out.fillBranch("genPhi1", genPhi1)
         self.out.fillBranch("lumiWeight", self.lumiWeight)
         self.out.fillBranch("lheWeight", lheWeight)
         self.out.fillBranch("stitchWeight", stitchWeight)

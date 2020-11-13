@@ -985,9 +985,9 @@ XS = {
   'ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_RunIIFall17' : 5.071E-01*5.824E-01,
   'ttHTobb_M125_TuneCP5_13TeV-powheg-pythia8_RunIIAutumn18' : 5.071E-01*5.824E-01,
 #  'ZToJPsiGamma-TuneCUETP8M1_13TeV-pythia8_RunIISummer16' : 1.88,
-  'ZToJPsiGamma_TuneCUETP8M1_13TeV-pythia8_RunIISummer16' : (6077.22 * 1./(0.033658*3.)) * 9.96e-8 * 0.0593,
-  'ZToJPsiGamma_TuneCP5_13TeV-pythia8_RunIIFall17' : (6077.22 * 1./(0.033658*3.)) * 9.96e-8 * 0.0593,
-  'ZToJPsiGamma_TuneCP5_13TeV-pythia8_RunIIAutumn18' : (6077.22 * 1./(0.033658*3.)) * 9.96e-8 * 0.0593,
+  'ZToJPsiGamma_TuneCUETP8M1_13TeV-pythia8_RunIISummer16' : (6077.22 * 1./(0.033658*3.)) * 8.96e-8 * 0.0593,
+  'ZToJPsiGamma_TuneCP5_13TeV-pythia8_RunIIFall17' : (6077.22 * 1./(0.033658*3.)) * 8.96e-8 * 0.0593,
+  'ZToJPsiGamma_TuneCP5_13TeV-pythia8_RunIIAutumn18' : (6077.22 * 1./(0.033658*3.)) * 8.96e-8 * 0.0593,
   'HToJPsiG_ToMuMuG_allProdMode_M125_TuneCUETP8M1_13TeV_Pythia8_RunIISummer16' : (4.858E+01 + 3.782E+00 + 1.373E+00 + (0.8839 + 0.1227) + 5.071E-01) * 2.99e-6 * 0.0593,
 }
 # https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CERNYellowReportPageAt13TeV
