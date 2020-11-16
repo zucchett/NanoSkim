@@ -21,6 +21,7 @@ parser.add_option("-v", "--verbose", action="store_true", dest="verbose", defaul
 # Make the proxy visible on LSF nodes
 os.system("cp " + TEMPPROXY + " " + USERPROXY) # Copy certificate to lustre
 os.environ['X509_USER_PROXY'] = USERPROXY # Set environment variable
+os.environ['PYTHONHOME'] = PYTHONBASE
 
 def runSampleLSF(s):
     outputDir = OUTDIR + "/" + s + "/"
@@ -52,7 +53,7 @@ def runFileLSF(s):
 for s in SAMPLES:
     if len(s) <= 0 or s.startswith('#'): continue
     if len(options.filter) > 0 and not options.filter in s: continue
-    print s
+    
     if "2016" in options.year and not "Run2016" in s and not "Summer16" in s: continue
     if "2017" in options.year and not "Run2017" in s and not "Fall17" in s: continue
     if "2018" in options.year and not "Run2018" in s and not "Autumn18" in s: continue

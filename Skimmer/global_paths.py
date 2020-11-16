@@ -1,31 +1,34 @@
 #! /usr/bin/env python
 
+import os
+
 ###
 ### Auxiliary file defining all global paths for the analysis to work.
 ###
 
+# CMSSW directory that is used in the ntuple production
+CMSSWDIR = os.getenv("CMSSW_BASE") + "/src/"
+
+# version of the NanoAOD to be used and corresponding filelist
 FILELIST = "fileList_v7"
 
-## primary work directory where the analysis scripts are located
-MAINDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/"
+# primary work directory where the analysis scripts are located
+MAINDIR = CMSSWDIR + "/NanoSkim/Skimmer/"
 
 # local directory to store small output files for further inspection
 TESTDIR = "outputTest/"
 
 # large enough storage space to hold the unskimmed primary ntuples produced directly from NanoAOD
-OUTDIR = "/lustre/cmswork/zucchett/Skim/Temp/"
+OUTDIR = "/lustre/cmswork/" + os.getenv("USER") + "/Skim/Temp/"
 
 # LSF working directory
-LSFDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/LSFWD/"
+LSFDIR = CMSSWDIR + "/NanoSkim/Skimmer/LSFWD/"
 
 # location where the HTCondor submission log files (including stderr & stdout) should be located
-LOGDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/LSF/"
-
-# CMSSW directory that is used in the ntuple production
-CMSSWDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/"
+LOGDIR = CMSSWDIR + "/NanoSkim/Skimmer/LSF/"
 
 # location where the combine tool is installed
-COMBINEDIR = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/HiggsAnalysis/CombinedLimit/"
+COMBINEDIR = CMSSWDIR + "/HiggsAnalysis/CombinedLimit/"
 
 # File prefix to prepend to the file name
 #FILESITE = "root://cms-xrd-global.cern.ch/"
@@ -36,9 +39,12 @@ FILESITE = "root://xrootd-cms.infn.it//"
 # Local file prefix
 LOCALSITE = "root://xrootd-cms.infn.it/"
 
+# Python
+PYTHONBASE = "/cvmfs/cms.cern.ch/slc7_amd64_gcc700/external/python/2.7.14-omkpbe4"
+
 # Grid user proxy to run on files outside T2
 TEMPPROXY = "/tmp/x509up_u723"
-USERPROXY = "/lustre/cmswork/zucchett/Skim/CMSSW_10_2_6/src/NanoSkim/Skimmer/x509up_u723" # this location HAS TO BE on lustre
+USERPROXY = CMSSWDIR + "/NanoSkim/Skimmer/x509up_u723" # this location HAS TO BE on lustre
 
 
 if __name__ == "__main__":
