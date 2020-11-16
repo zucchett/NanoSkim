@@ -274,9 +274,9 @@ class Higgs(Module):
                 
                 # Reweight
                 if self.isSignal:
-                    stitchWeight = 3./4. * (1. + genCosTheta1**2) # Transverse polarization (H, Z)
+                    topWeight = 3./4. * (1. + genCosTheta1**2) # Transverse polarization (H, Z)
                     if 'ZToJPsiG' in self.sampleName:
-                        topWeight = 3./2. * (1. - genCosTheta1**2) # Longitudinal polarization (Z)
+                        stitchWeight = 3./2. * (1. - genCosTheta1**2) # Longitudinal polarization (Z)
     
                 # Acceptance
                 if abs(genPhoton.Eta()) < 2.5:
