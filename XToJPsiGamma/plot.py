@@ -60,9 +60,9 @@ XBINWIDTH = 2.
 
 ########## SAMPLES ##########
 data = ["data_obs"]
-#back = ["DYJetsToLL"]
-back = ["ZToJPsiG"]
-sign = ["HToJPsiG"]
+back = ["DYJetsToLL"]
+#back = ["ZToJPsiG"]
+sign = ["ZToJPsiG", "HToJPsiG"]
 ########## ######## ##########
 
 

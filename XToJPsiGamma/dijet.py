@@ -46,7 +46,7 @@ CARDDIR     = "datacards/"
 WORKDIR     = "workspaces/"
 RATIO       = 4
 SHOWERR     = True
-BLIND       = True
+BLIND       = False
 LUMI        = 137000
 YEAR        = options.year
 VERBOSE     = options.verbose
@@ -142,7 +142,7 @@ def dijet(category):
     
     
     # 2 parameters
-    p2_1 = RooRealVar("CMSRun2_"+category+"_p2_1", "p1", 0., -100., 1000.)
+    p2_1 = RooRealVar("CMSRun2_"+category+"_p2_1", "p1", 0., -10000., 10000.)
     p2_2 = RooRealVar("CMSRun2_"+category+"_p2_2", "p2", p1_1.getVal(), -100., 600.)
     modelBkg2 = RooGenericPdf("Bkg2", "Bkg. fit (3 par.)", "pow(1-@0/13000, @1) / pow(@0/13000, @2)", RooArgList(X_mass, p2_1, p2_2))
     normzBkg2 = RooRealVar(modelBkg2.GetName()+"_norm", "Number of background events", nEvents, 0., 1.e10)
@@ -152,7 +152,7 @@ def dijet(category):
     fitRes2.Print()
     
     # 3 parameters
-    p3_1 = RooRealVar("CMSRun2_"+category+"_p3_1", "p1", p2_1.getVal(), -1000., 1000.)
+    p3_1 = RooRealVar("CMSRun2_"+category+"_p3_1", "p1", p2_1.getVal(), -10000., 10000.)
     p3_2 = RooRealVar("CMSRun2_"+category+"_p3_2", "p2", p2_2.getVal(), -200., 1000.)
     p3_3 = RooRealVar("CMSRun2_"+category+"_p3_3", "p3", -2.5, -100., 100.)
     modelBkg3 = RooGenericPdf("Bkg3", "Bkg. fit (4 par.)", "pow(1-@0/13000, @1) / pow(@0/13000, @2+@3*log(@0/13000))", RooArgList(X_mass, p3_1, p3_2, p3_3))
@@ -163,7 +163,7 @@ def dijet(category):
     fitRes3.Print()
     
     # 4 parameters
-    p4_1 = RooRealVar("CMSRun2_"+category+"_p4_1", "p1", p3_1.getVal(), -1000., 1000.)
+    p4_1 = RooRealVar("CMSRun2_"+category+"_p4_1", "p1", p3_1.getVal(), -10000., 10000.)
     p4_2 = RooRealVar("CMSRun2_"+category+"_p4_2", "p2", p3_2.getVal(), -1000., 1000.)
     p4_3 = RooRealVar("CMSRun2_"+category+"_p4_3", "p3", p3_3.getVal(), -10., 10.)
     p4_4 = RooRealVar("CMSRun2_"+category+"_p4_4", "p4", 0.1, -10., 10.)
@@ -264,10 +264,6 @@ def dijet(category):
         #fitRes = modelBkg.fitTo(setToys, RooFit.Range(fitRanges), RooFit.Extended(True), RooFit.Save(1), RooFit.SumW2Error(False), RooFit.Strategy(2), RooFit.Minimizer("Minuit2"), RooFit.PrintLevel(1 if VERBOSE else -1))
         
 
-    if VERBOSE: raw_input("Press Enter to continue...")
-    
-
-
     #*******************************************************#
     #                                                       #
     #                    Signal shape                       #
@@ -281,6 +277,8 @@ def dijet(category):
     vsigma = {}
     valpha1 = {}
     vslope1 = {}
+    valpha2 = {}
+    vslope2 = {}
     smean  = {}
     ssigma = {}
     salpha1 = {}
@@ -302,54 +300,53 @@ def dijet(category):
     # Signal shape uncertainties (common amongst all mass points)
     xmean_fit = RooRealVar("sig_p1_fit", "Variation of the resonance position with the fit uncertainty", 0.005, -1., 1.)
     smean_fit = RooRealVar("CMSRun2_sig_p1_fit", "Change of the resonance position with the fit uncertainty", 0., -10, 10)
-    xmean_jes = RooRealVar("sig_p1_scale_jes", "Variation of the resonance position with the jet energy scale", 0.010, -1., 1.) #0.001
-    smean_jes = RooRealVar("CMSRun2_sig_p1_jes", "Change of the resonance position with the jet energy scale", 0., -10, 10)
-    xmean_e = RooRealVar("sig_p1_scale_e", "Variation of the resonance position with the electron energy scale", 0.001, -1., 1.)
-    smean_e = RooRealVar("CMSRun2_sig_p1_scale_e", "Change of the resonance position with the electron energy scale", 0., -10, 10)
-    xmean_m = RooRealVar("sig_p1_scale_m", "Variation of the resonance position with the muon energy scale", 0.001, -1., 1.)
+    xmean_m = RooRealVar("sig_p1_scale_m", "Variation of the resonance position with the muon energy scale", 0.0006, -1., 1.)
     smean_m = RooRealVar("CMSRun2_sig_p1_scale_m", "Change of the resonance position with the muon energy scale", 0., -10, 10)
+    xmean_a = RooRealVar("sig_p1_scale_a", "Variation of the resonance position with the photon energy scale", 0.0006, -1., 1.)
+    smean_a = RooRealVar("CMSRun2_sig_p1_scale_a", "Change of the resonance position with the photon energy scale", 0., -10, 10)
 
     xsigma_fit = RooRealVar("sig_p2_fit", "Variation of the resonance width with the fit uncertainty", 0.02, -1., 1.)
     ssigma_fit = RooRealVar("CMSRun2_sig_p2_fit", "Change of the resonance width with the fit uncertainty", 0., -10, 10)
-    xsigma_jes = RooRealVar("sig_p2_scale_jes", "Variation of the resonance width with the jet energy scale", 0.010, -1., 1.) #0.001
-    ssigma_jes = RooRealVar("CMSRun2_sig_p2_jes", "Change of the resonance width with the jet energy scale", 0., -10, 10)
-    xsigma_jer = RooRealVar("sig_p2_scale_jer", "Variation of the resonance width with the jet energy resolution", 0.020, -1., 1.)
-    ssigma_jer = RooRealVar("CMSRun2_sig_p2_jer", "Change of the resonance width with the jet energy resolution", 0., -10, 10)
-    xsigma_e = RooRealVar("sig_p2_scale_e", "Variation of the resonance width with the electron energy scale", 0.001, -1., 1.)
-    ssigma_e = RooRealVar("CMSRun2_sig_p2_scale_e", "Change of the resonance width with the electron energy scale", 0., -10, 10)
-    xsigma_m = RooRealVar("sig_p2_scale_m", "Variation of the resonance width with the muon energy scale", 0.040, -1., 1.)
+    xsigma_m = RooRealVar("sig_p2_scale_m", "Variation of the resonance width with the muon energy scale", 0.010, -1., 1.)
     ssigma_m = RooRealVar("CMSRun2_sig_p2_scale_m", "Change of the resonance width with the muon energy scale", 0., -10, 10)
+    xsigma_a = RooRealVar("sig_p2_scale_a", "Variation of the resonance width with the photon energy scale", 0.010, -1., 1.)
+    ssigma_a = RooRealVar("CMSRun2_sig_p2_scale_a", "Change of the resonance width with the photon energy scale", 0., -10, 10)
     
     xalpha1_fit = RooRealVar("sig_p3_fit", "Variation of the resonance alpha with the fit uncertainty", 0.03, -1., 1.)
     salpha1_fit = RooRealVar("CMSRun2_sig_p3_fit", "Change of the resonance alpha with the fit uncertainty", 0., -10, 10)
     
     xslope1_fit = RooRealVar("sig_p4_fit", "Variation of the resonance slope with the fit uncertainty", 0.10, -1., 1.)
     sslope1_fit = RooRealVar("CMSRun2_sig_p4_fit", "Change of the resonance slope with the fit uncertainty", 0., -10, 10)
+    
+    xalpha2_fit = RooRealVar("sig_p5_fit", "Variation of the resonance alpha 2 with the fit uncertainty", 0.03, -1., 1.)
+    salpha2_fit = RooRealVar("CMSRun2_sig_p5_fit", "Change of the resonance alpha 2 with the fit uncertainty", 0., -10, 10)
+    
+    xslope2_fit = RooRealVar("sig_p6_fit", "Variation of the resonance slope 2 with the fit uncertainty", 0.10, -1., 1.)
+    sslope2_fit = RooRealVar("CMSRun2_sig_p6_fit", "Change of the resonance slope 2 with the fit uncertainty", 0., -10, 10)
 
     xmean_fit.setConstant(True)
     smean_fit.setConstant(True)
-    xmean_jes.setConstant(True)
-    smean_jes.setConstant(True)
-    xmean_e.setConstant(True)
-    smean_e.setConstant(True)
     xmean_m.setConstant(True)
     smean_m.setConstant(True)
+    xmean_a.setConstant(True)
+    smean_a.setConstant(True)
     
     xsigma_fit.setConstant(True)
     ssigma_fit.setConstant(True)
-    xsigma_jes.setConstant(True)
-    ssigma_jes.setConstant(True)
-    xsigma_jer.setConstant(True)
-    ssigma_jer.setConstant(True)
-    xsigma_e.setConstant(True)
-    ssigma_e.setConstant(True)
     xsigma_m.setConstant(True)
     ssigma_m.setConstant(True)
+    xsigma_a.setConstant(True)
+    ssigma_a.setConstant(True)
     
     xalpha1_fit.setConstant(True)
     salpha1_fit.setConstant(True)
     xslope1_fit.setConstant(True)
     sslope1_fit.setConstant(True)
+    
+    xalpha2_fit.setConstant(True)
+    salpha2_fit.setConstant(True)
+    xslope2_fit.setConstant(True)
+    sslope2_fit.setConstant(True)
 
     
     #if not isSB:
@@ -367,32 +364,34 @@ def dijet(category):
         if VERBOSE: print " - Dataset with", setSignal[s].sumEntries(), "events loaded"
     
         # Build model
-        signalName = s[0]
-        m = 91.2 if signalName=="Z" else 125.
+        signalName = s[0] + "_" + category
+        m = 91.2 if s[0].startswith("Z") else 125.
         
         # define the signal PDF
-        vmean[s] = RooRealVar(signalName + "_vmean", "Crystal Ball mean", m, m*0.9, m*1.1)
-        #smean[s] = RooFormulaVar(signalName + "_mean", "@0*(@1*@2*@3)", RooArgList(vmean[s], smean_e, smean_m, smean_jes))
-        smean[s] = RooFormulaVar(signalName + "_mean", "@0*(1+@1*@2)*(1+@3*@4)*(1+@5*@6)*(1+@7*@8)", RooArgList(vmean[s], xmean_e, smean_e, xmean_m, smean_m, xmean_jes, smean_jes, xmean_fit, smean_fit))
+        vmean[s] = RooRealVar(signalName + "_vmean", "Crystal Ball mean", m, m*0.95, m*1.05)
+        smean[s] = RooFormulaVar(signalName + "_mean", "@0*(1+@1*@2)*(1+@3*@4)*(1+@5*@6)", RooArgList(vmean[s], xmean_fit, smean_fit, xmean_m, smean_m, xmean_a, smean_a))
 
-        vsigma[s] = RooRealVar(signalName + "_vsigma", "Crystal Ball sigma", m*0.01, m*0.0001, m*0.1)
-        #ssigma[s] = RooFormulaVar(signalName + "_sigma", "@0*(@1*@2*@3*@4)", RooArgList(vsigma[s], ssigma_e, ssigma_e, ssigma_jes, ssigma_jer))
-        sigmaList = RooArgList(vsigma[s], xsigma_e, ssigma_e, xsigma_m, ssigma_m, xsigma_jes, ssigma_jes, xsigma_jer, ssigma_jer)
-        sigmaList.add(RooArgList(xsigma_fit, ssigma_fit))
-        ssigma[s] = RooFormulaVar(signalName + "_sigma", "@0*(1+@1*@2)*(1+@3*@4)*(1+@5*@6)*(1+@7*@8)*(1+@9*@10)", sigmaList)
+        vsigma[s] = RooRealVar(signalName + "_vsigma", "Crystal Ball sigma", m*0.01, m*0., m*0.1)
+        ssigma[s] = RooFormulaVar(signalName + "_sigma", "@0*(1+@1*@2)*(1+@3*@4)*(1+@5*@6)", RooArgList(vsigma[s], xsigma_fit, ssigma_fit, xsigma_m, ssigma_m, xsigma_a, ssigma_a))
         
         valpha1[s] = RooRealVar(signalName + "_valpha1", "Crystal Ball alpha", 1.,  0., 5.) # number of sigmas where the exp is attached to the gaussian core. >0 left, <0 right
         salpha1[s] = RooFormulaVar(signalName + "_alpha1", "@0*(1+@1*@2)", RooArgList(valpha1[s], xalpha1_fit, salpha1_fit))
 
-        vslope1[s] = RooRealVar(signalName + "_vslope1", "Crystal Ball slope", 10., 1., 60.) # slope of the power tail
+        vslope1[s] = RooRealVar(signalName + "_vslope1", "Crystal Ball slope", 3., 0., 110.) # slope of the power tail
         sslope1[s] = RooFormulaVar(signalName + "_slope1", "@0*(1+@1*@2)", RooArgList(vslope1[s], xslope1_fit, sslope1_fit))
+        
+        valpha2[s] = RooRealVar(signalName + "_valpha2", "Crystal Ball alpha 2", 1.,  0., 5.) # number of sigmas where the exp is attached to the gaussian core. >0 left, <0 right
+        salpha2[s] = RooFormulaVar(signalName + "_alpha2", "@0*(1+@1*@2)", RooArgList(valpha2[s], xalpha2_fit, salpha2_fit))
+
+        vslope2[s] = RooRealVar(signalName + "_vslope2", "Crystal Ball slope 2", 3., 0., 110.) # slope of the power tail
+        sslope2[s] = RooFormulaVar(signalName + "_slope2", "@0*(1+@1*@2)", RooArgList(vslope2[s], xslope2_fit, sslope2_fit))
 
 #        smean[s] = RooRealVar(signalName + "_mean" , "mean of the Crystal Ball", m, m*0.8, m*1.2)
 #        ssigma[s] = RooRealVar(signalName + "_sigma", "Crystal Ball sigma", m*0.04, m*0.001, m*0.2)
 #        salpha1[s] = RooRealVar(signalName + "_alpha1", "Crystal Ball alpha", 1,  0., 5.) # number of sigmas where the exp is attached to the gaussian core. >0 left, <0 right
 #        sslope1[s] = RooRealVar(signalName + "_slope1", "Crystal Ball slope", 20, 10., 60.) # slope of the power tail
-        salpha2[s] = RooRealVar(signalName + "_alpha2", "Crystal Ball alpha", 2,  1., 5.) # number of sigmas where the exp is attached to the gaussian core. >0 left, <0 right
-        sslope2[s] = RooRealVar(signalName + "_slope2", "Crystal Ball slope", 10, 1.e-1, 115.) # slope of the power tail
+#        salpha2[s] = RooRealVar(signalName + "_alpha2", "Crystal Ball alpha", 2,  1., 5.) # number of sigmas where the exp is attached to the gaussian core. >0 left, <0 right
+#        sslope2[s] = RooRealVar(signalName + "_slope2", "Crystal Ball slope", 10, 1.e-1, 115.) # slope of the power tail
 
 
         signal[s] = RooDoubleCrystalBall(signalName, "Double Crystal Ball", X_mass, smean[s], ssigma[s], salpha1[s], sslope1[s], salpha2[s], sslope2[s]) # Signal name does not have the channel
@@ -419,8 +418,8 @@ def dijet(category):
         vsigma[s].setConstant(True)
         valpha1[s].setConstant(True)
         vslope1[s].setConstant(True)
-        salpha2[s].setConstant(True)
-        sslope2[s].setConstant(True)
+        valpha2[s].setConstant(True)
+        vslope2[s].setConstant(True)
         signalNorm[s].setConstant(True)
         signalXS[s].setConstant(True)
     
@@ -449,7 +448,24 @@ def dijet(category):
         card += "-----------------------------------------------------------------------------------\n"
         for p in range(1, order+1): card += "%-35s     flatParam\n" % ("CMSRun2_"+category+"_p%d_%d" % (order, p))
         card += "%-35s     lnU       %-20s%-20.0f\n" % ("CMSRun2_"+category+"_norm",    "-", 4.)
-#        for s in sorted(syst_sig): card += "%-35s     param     %-20.1f%-20.1f\n" % (s, 0., syst_sig[s])
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("CMSRun2_eff_trigger",    1.040, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("CMSRun2_eff_m",    1.030 if signalName=="Z" else 1.020, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("CMSRun2_eff_a",    1.012, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("CMSRun2_eff_e",    1.010, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("CMSRun2_scale_pu",    1.008, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("CMSRun2_lumi",    1.025, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("pdf_scale", 1.017 if signalName=="Z" else 1.032, "-")
+        card += "%-35s     lnN       %-20.4f%-20s\n" % ("qcd_scale", 1.035 if signalName=="Z" else 1.056, "-")
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p1_fit", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p1_scale_m", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p1_scale_a", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p2_fit", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p2_scale_m", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p2_scale_a", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p3_fit", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p4_fit", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p5_fit", 0, 1)
+        card += "%-35s     param %.1f %.1f\n" % ("CMSRun2_sig_p6_fit", 0, 1)
 
         '''
         # log-normal uncertainties
@@ -546,6 +562,7 @@ def dijet(category):
     
 
     graphData = setData.plotOn(frame, RooFit.Binning(binsXmass), RooFit.Invisible())
+    #if BLIND: setToys.plotOn(frame, RooFit.Binning(binsXmass), RooFit.MarkerColor(2), RooFit.LineColor(2), RooFit.MarkerStyle(24))
     modelBkg.plotOn(frame, RooFit.Normalization(nEvents, RooAbsReal.NumEvent), RooFit.VisualizeError(fitRes, 1, False), RooFit.LineColor(602), RooFit.FillColor(590), RooFit.FillStyle(1001), RooFit.DrawOption("FL"), RooFit.Name("1sigma"))
     modelBkg.plotOn(frame, RooFit.Normalization(nEvents, RooAbsReal.NumEvent), RooFit.LineColor(602), RooFit.FillColor(590), RooFit.FillStyle(1001), RooFit.DrawOption("L"), RooFit.Name(modelBkg.GetName()))
     modelAlt.plotOn(frame, RooFit.Normalization(nEvents, RooAbsReal.NumEvent), RooFit.LineStyle(7), RooFit.LineColor(613), RooFit.FillColor(609), RooFit.FillStyle(1001), RooFit.DrawOption("L"), RooFit.Name(modelAlt.GetName()))

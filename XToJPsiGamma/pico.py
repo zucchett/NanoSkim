@@ -23,6 +23,7 @@ verbose     = options.verbose
 
 
 skimString = "isJPsiTrigger && nMuon >= 2 && nPhoton >= 1 && nCleanMuon == 0 && nCleanPhoton == 0 && nCleanElectron == 0 && Muon_pt[iMuon1] > 5. && Muon_pt[iMuon2] > 5. && Muon_mediumId[iMuon1] && Muon_mediumId[iMuon2] && minMuonIso < 0.05 && maxMuonIso < 0.15 && JPsi_pt > 26. && Photon_pt[iPhoton] > 15. && Photon_mvaID_WP80[iPhoton] && Photon_pfRelIso03_all[iPhoton] < 0.05 && H_dEta < 1.7 && nCleanJet <= 2 && (JPsi_mass > 3.0 && JPsi_mass < 3.2) && abs(Muon_dxy[iMuon1]-Muon_dxy[iMuon2])<0.015 && abs(Muon_dz[iMuon1]-Muon_dz[iMuon2])<0.020"
+#skimString = "isSingleMuonPhotonTrigger && nMuon >= 2 && nPhoton >= 1 && nCleanMuon == 0 && nCleanPhoton == 0 && nCleanElectron == 0 && Muon_pt[iMuon1] > 18. && Muon_pt[iMuon2] > 5. && Muon_mediumId[iMuon1] && Muon_mediumId[iMuon2] && minMuonIso < 0.05 && maxMuonIso < 0.15 && Photon_pt[iPhoton] > 32. && Photon_mvaID_WP80[iPhoton] && Photon_pfRelIso03_all[iPhoton] < 0.05 && H_dEta < 1.7 && nCleanJet <= 2 && (JPsi_mass > 3.0 && JPsi_mass < 3.2) && abs(Muon_dxy[iMuon1]-Muon_dxy[iMuon2])<0.015 && abs(Muon_dz[iMuon1]-Muon_dz[iMuon2])<0.020"
 
 if not os.path.exists(origin):
     print '- Origin directory', origin, 'does not exist, aborting...'

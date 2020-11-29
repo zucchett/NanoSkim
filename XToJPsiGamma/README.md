@@ -39,7 +39,7 @@ The fitting macro produces:
 
 Datacards are not automatically merged; the macro that does that is run with `source combineCards.sh`, and produces another datacard that combines the information from the input cards.
 
-The fits are performed with `combine`, which has the be installed in the same CMSSW release. Among the many options, the most interesting commonds are:
+The fits are performed with `combine`, which has the be installed in the same CMSSW release. Alongside with the main package, the `combineHarvester` package should be installed as well. Among the many options, the most interesting commonds are:
 
  - `combine -M AsymptoticLimits <path_to_the_datacard>` to run the limits with the Asymptotic approximation
  
