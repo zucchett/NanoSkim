@@ -1,0 +1,77 @@
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+c      written by the UFO converter
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+ckmblock 1 mdl_cabi
+
+inputsjpsi 1 mdl_gHJPsiPhotonRe
+
+inputsjpsi 2 mdl_gHJPsiPhotonIm
+
+inputsjpsi 3 mdl_gJPsimumu
+
+inputsjpsi 4 mdl_gZJPsiPhotonRe
+
+inputsjpsi 5 mdl_gZJPsiPhotonIm
+
+sminputs 1 aEWM1
+
+sminputs 2 mdl_Gf
+
+sminputs 3 aS
+
+yukawa 1 mdl_ymdo
+
+yukawa 2 mdl_ymup
+
+yukawa 3 mdl_yms
+
+yukawa 4 mdl_ymc
+
+yukawa 5 mdl_ymb
+
+yukawa 6 mdl_ymt
+
+yukawa 11 mdl_yme
+
+yukawa 13 mdl_ymm
+
+yukawa 15 mdl_ymtau
+
+mass 23 mdl_MZ
+
+mass 443 mdl_MJPsi
+
+mass 11 mdl_Me
+
+mass 13 mdl_MMU
+
+mass 15 mdl_MTA
+
+mass 2 mdl_MU
+
+mass 4 mdl_MC
+
+mass 6 mdl_MT
+
+mass 1 mdl_MD
+
+mass 3 mdl_MS
+
+mass 5 mdl_MB
+
+mass 25 mdl_MH
+
+decay 23 mdl_WZ
+
+decay 24 mdl_WW
+
+decay 443 mdl_WJPsi
+
+decay 6 mdl_WT
+
+decay 25 mdl_WH
+
+decay 9000006 mdl_WH1
+
+mass 9000006 mdl_MP
