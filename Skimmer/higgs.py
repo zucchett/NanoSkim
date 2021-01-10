@@ -34,8 +34,12 @@ class Higgs(Module):
         self.hists["Acceptance"] = ROOT.TH1F("Acceptance", "Acceptance", 5, -0.5, 4.5)
         self.hists["genH_pt"] = ROOT.TH1F("genH_pt", ";generator H p_{T} (GeV)", 100, 0., 100.)
         self.hists["genH_eta"] = ROOT.TH1F("genH_eta", ";generator H #eta", 100, -5., 5.)
+        self.hists["genH_phi"] = ROOT.TH1F("genH_phi", ";generator H #phi", 100, -3.15, 3.15)
+        self.hists["genH_mass"] = ROOT.TH1F("genH_mass", ";generator H mass", 300, 0., 150.)
         self.hists["genJPsi_pt"] = ROOT.TH1F("genJPsi_pt", ";generator J/#Psi p_{T} (GeV)", 100, 0., 100.)
         self.hists["genJPsi_eta"] = ROOT.TH1F("genJPsi_eta", ";generator J/#Psi #eta", 100, -5., 5.)
+        self.hists["genJPsi_phi"] = ROOT.TH1F("genJPsi_phi", ";generator J/#Psi #phi", 100, -3.15, 3.15)
+        self.hists["genJPsi_mass"] = ROOT.TH1F("genJPsi_mass", ";generator J/#Psi mass", 200, 0., 4.)
         self.hists["genPhoton_pt"] = ROOT.TH1F("genPhoton_pt", ";generator #gamma p_{T} (GeV)", 100, 0., 100.)
         self.hists["genPhoton_eta"] = ROOT.TH1F("genPhoton_eta", ";generator #gamma #eta", 100, -5., 5.)
         self.hists["genMuon1_pt"] = ROOT.TH1F("genMuon1_pt", ";generator #mu^{-} p_{T} (GeV)", 100, 0., 100.)
@@ -46,6 +50,7 @@ class Higgs(Module):
         self.hists["genCosThetaStar"] = ROOT.TH1F("genCosThetaStar", ";cos #theta^{*}", 100, -1., 1.)
         self.hists["genCosTheta1"] = ROOT.TH1F("genCosTheta1", ";cos #theta_{1}", 100, -1., 1.)
         self.hists["genPhi1"] = ROOT.TH1F("genPhi1", ";#Phi_{1}", 100, -3.1415, 3.1415)
+        self.hists["genCosThetaStarZtoMM"] = ROOT.TH1F("genCosThetaStarZtoMM", ";cos #theta^{*}", 100, -1., 1.)
         
         self.hists["Cutflow"] = ROOT.TH1F("Cutflow", "Cutflow", 10, -0.5, 9.5)
         self.hists["Cutflow"].GetXaxis().SetBinLabel(1, "All events")
@@ -242,10 +247,10 @@ class Higgs(Module):
             for i in range(event.nGenPart):
 #                print i, "\t", event.GenPart_pdgId[i], "\t", event.GenPart_status[i], "\t", event.GenPart_statusFlags[i], "\t", event.GenPart_pt[i]
                 if event.GenPart_pdgId[i] == 25 or event.GenPart_pdgId[i] == 23: genHIdx = i
-                if event.GenPart_pdgId[i] == 443: genJPsiIdx = i
-                if event.GenPart_pdgId[i] == 22 and event.GenPart_status[i] in [1, 23] and (genPhotonIdx < 0 or event.GenPart_pt[i] > event.GenPart_pt[genPhotonIdx]): genPhotonIdx = i
-                if event.GenPart_pdgId[i] == -13 and event.GenPart_status[i] == 1 and (genMuon1Idx < 0 or event.GenPart_pt[i] > event.GenPart_pt[genMuon1Idx]): genMuon1Idx = i
-                if event.GenPart_pdgId[i] == +13 and event.GenPart_status[i] == 1 and (genMuon2Idx < 0 or event.GenPart_pt[i] > event.GenPart_pt[genMuon2Idx]): genMuon2Idx = i
+                if event.GenPart_pdgId[i] == 443 and event.GenPart_genPartIdxMother[i] >= 0 and event.GenPart_pdgId[event.GenPart_genPartIdxMother[i]] == 25: genJPsiIdx = i
+                if event.GenPart_pdgId[i] == 22 and event.GenPart_status[i] in [1, 23] and event.GenPart_genPartIdxMother[i] >= 0 and event.GenPart_pdgId[event.GenPart_genPartIdxMother[i]] == 25: genPhotonIdx = i #and (genPhotonIdx < 0 or event.GenPart_pt[i] > event.GenPart_pt[genPhotonIdx])
+                if event.GenPart_pdgId[i] == -13 and event.GenPart_status[i] == 1 and event.GenPart_genPartIdxMother[i] >= 0 and event.GenPart_pdgId[event.GenPart_genPartIdxMother[i]] != 22 and (genMuon1Idx < 0 or event.GenPart_pt[i] > event.GenPart_pt[genMuon1Idx]): genMuon1Idx = i
+                if event.GenPart_pdgId[i] == +13 and event.GenPart_status[i] == 1 and event.GenPart_genPartIdxMother[i] >= 0 and event.GenPart_pdgId[event.GenPart_genPartIdxMother[i]] != 22 and (genMuon2Idx < 0 or event.GenPart_pt[i] > event.GenPart_pt[genMuon2Idx]): genMuon2Idx = i
             
             if genHIdx >= 0 and genJPsiIdx >= 0 and genPhotonIdx >= 0 and genMuon1Idx >= 0 and genMuon2Idx >= 0:
                 genH, genJPsi, genMuon1, genMuon2, genPhoton = TLorentzVector(), TLorentzVector(), TLorentzVector(), TLorentzVector(), TLorentzVector()
@@ -255,29 +260,36 @@ class Higgs(Module):
                 if genMuon1Idx >= 0: genMuon1.SetPtEtaPhiM(event.GenPart_pt[genMuon1Idx], event.GenPart_eta[genMuon1Idx], event.GenPart_phi[genMuon1Idx], event.GenPart_mass[genMuon1Idx])
                 if genMuon2Idx >= 0: genMuon2.SetPtEtaPhiM(event.GenPart_pt[genMuon2Idx], event.GenPart_eta[genMuon2Idx], event.GenPart_phi[genMuon2Idx], event.GenPart_mass[genMuon2Idx])
                 
-    #            if genH.M() > 0. and genJPsi.M() > 0. and genPhoton.Pt() > 0. and genMuon1.M() > 0. and genMuon2.M() > 0.:
+                # Recalculate candidate 4-vectors for consistent calculation of angular variables
+                genJPsi = genMuon1 + genMuon2
+                genH = genJPsi + genPhoton
+                
+                genCosThetaStar, genCosTheta1, genPhi1 = self.returnCosThetaStar(genH, genJPsi), self.returnCosTheta1(genJPsi, genMuon1, genMuon2, genPhoton), self.returnPhi1(genH, genMuon1, genMuon2)
+                
                 self.hists["genH_pt"].Fill(genH.Pt(), lheWeight)
                 self.hists["genH_eta"].Fill(genH.Eta(), lheWeight)
+                self.hists["genH_phi"].Fill(genH.Phi(), lheWeight)
+                self.hists["genH_mass"].Fill(genH.M(), lheWeight)
                 self.hists["genJPsi_pt"].Fill(genJPsi.Pt(), lheWeight)
                 self.hists["genJPsi_eta"].Fill(genJPsi.Eta(), lheWeight)
+                self.hists["genJPsi_phi"].Fill(genJPsi.Phi(), lheWeight)
+                self.hists["genJPsi_mass"].Fill(genJPsi.M(), lheWeight)
                 self.hists["genPhoton_pt"].Fill(genPhoton.Pt(), lheWeight)
                 self.hists["genPhoton_eta"].Fill(genPhoton.Eta(), lheWeight)
                 self.hists["genMuon1_pt"].Fill(max(genMuon1.Pt(), genMuon2.Pt()), lheWeight)
                 self.hists["genMuon1_eta"].Fill(genMuon1.Eta(), lheWeight)
                 self.hists["genMuon2_pt"].Fill(min(genMuon1.Pt(), genMuon2.Pt()), lheWeight)
                 self.hists["genMuon2_eta"].Fill(genMuon2.Eta(), lheWeight)
-                
-                genCosThetaStar, genCosTheta1, genPhi1 = self.returnCosThetaStar(genH, genJPsi), self.returnCosTheta1(genJPsi, genMuon1, genMuon2, genPhoton), self.returnPhi1(genH, genMuon1, genMuon2)
                 self.hists["genCosThetaStar"].Fill(genCosThetaStar, lheWeight)
                 self.hists["genCosTheta1"].Fill(genCosTheta1, lheWeight)
                 self.hists["genPhi1"].Fill(genPhi1, lheWeight)
+                self.hists["genCosThetaStarZtoMM"].Fill(self.returnCosThetaStar(genH, genMuon1), lheWeight)
                 
                 # Reweight
-                if self.isSignal:
-                    topWeight = 3./4. * (1. + genCosTheta1**2) # Transverse polarization (H, Z)
-                    if 'ZToJPsiG' in self.sampleName:
-                        stitchWeight = 3./2. * (1. - genCosTheta1**2) # Longitudinal polarization (Z)
-    
+                topWeight = 3./4. * (1. + genCosTheta1**2) # Transverse polarization (H, Z)
+                if 'ZToJPsiG' in self.sampleName:
+                    stitchWeight = 3./2. * (1. - genCosTheta1**2) # Longitudinal polarization (Z)
+                
                 # Acceptance
                 if abs(genPhoton.Eta()) < 2.5:
                     self.hists["Acceptance"].Fill(1, lheWeight)
