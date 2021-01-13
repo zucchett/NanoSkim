@@ -30,13 +30,16 @@ REVERSE = "\033[;7m"
 INPUT_PATH  = args.ipath + "/" # safer to add "/" at the end
 OUTPUT_PATH = args.opath + "/" # safer to add "/" at the end
 
-H_prod_list = ["ggH", "VBF", "WH", "ZH", "ttH", "bbH"]
-Z_prod_list = ["qqZ"]
+H_prod_list  = ["ggH", "VBF", "WH", "ZH", "ttH", "bbH"]
+Z_prod_list  = ["qqZ"]
+M_meson_list = ["JPsi", "PsiPrime"]
 
 for prod in H_prod_list:
-    sys.stdout.write("Processing production mode: " + BOLD + RED + prod + RESET + "\n")
-    os.system("python plot_channel.py -b -s H -p " + prod + " -i " + INPUT_PATH + " -o " + OUTPUT_PATH)
+    for meson in M_meson_list:
+        sys.stdout.write("Processing: P=" + BOLD + RED + prod + RESET + " M=" + BOLD + RED + meson + RESET + "\n")
+        os.system("python plot_channel.py -b -s H -p " + prod + " -m " + meson + " -i " + INPUT_PATH + " -o " + OUTPUT_PATH)
 
 for prod in Z_prod_list:
-    sys.stdout.write("Processing production mode: " + BOLD + RED + prod + RESET + "\n")
-    os.system("python plot_channel.py -b -s Z -p " + prod + " -i " + INPUT_PATH + " -o " + OUTPUT_PATH)
+    for meson in M_meson_list:
+        sys.stdout.write("Processing: P=" + BOLD + RED + prod + RESET + " M=" + BOLD + RED + meson + RESET + "\n")
+        os.system("python plot_channel.py -b -s H -p " + prod + " -m " + meson + " -i " + INPUT_PATH + " -o " + OUTPUT_PATH)

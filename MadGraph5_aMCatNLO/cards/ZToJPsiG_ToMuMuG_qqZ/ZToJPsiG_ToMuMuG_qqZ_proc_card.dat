@@ -35,6 +35,6 @@ define l+ = e+ mu+
 define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
-import model JPsi_UFO_with_Z
+import model JPsi_UFO_with_Z__hgg_plugin
 generate p p > z, (z > jpsi a, jpsi > mu+ mu-)
 output ZToJPsiG_ToMuMuG_qqZ -nojpeg
