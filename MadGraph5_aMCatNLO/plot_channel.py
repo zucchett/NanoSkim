@@ -9,6 +9,8 @@ from ROOT import TFile, TCanvas
 from ROOT import TH1D
 from ROOT import TTreeReader, TTreeReaderArray
 from ROOT import TLorentzVector
+from global_paths import *
+
 
 
 ################################################################################
@@ -20,8 +22,8 @@ parser.add_argument('-b', "--batch",  dest="batch", action="store_true", default
 parser.add_argument("-s", "--signal", type=str, dest="S", help="Z/H boson decay")
 parser.add_argument("-m", "--meson",  type=str, dest="M", help="J/Psi or PsiPrime decay product")
 parser.add_argument('-p', "--pmode",  type=str, dest="P", help="Production mode [ggH, VBF, WH, ZH, ttH, bbH, qqZ]")
-parser.add_argument('-i', "--input",  type=str, dest="ipath", default="/lustre/cmswork/ardino/MG5_data/", help="Input folder")
-parser.add_argument('-o', "--output", type=str, dest="opath", default="/lustre/cmswork/ardino/MG5_data/", help="Output folder")
+parser.add_argument('-i', "--input",  type=str, dest="ipath", default=DATADIR, help="Input folder")
+parser.add_argument('-o', "--output", type=str, dest="opath", default=PLOTDIR, help="Output folder")
 
 args = parser.parse_args()
 ################################################################################

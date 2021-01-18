@@ -1,6 +1,7 @@
 import argparse
 import sys
 import os
+from global_paths import *
 
 
 
@@ -9,8 +10,8 @@ import os
 ################################################################################
 parser = argparse.ArgumentParser(description="Plot all MadGraph5_aMCatNLO results")
 
-parser.add_argument('-i', "--input",  type=str, dest="ipath", default="/lustre/cmswork/ardino/MG5_data/", help="Input folder")
-parser.add_argument('-o', "--output", type=str, dest="opath", default="/lustre/cmswork/ardino/MG5_data/", help="Output folder")
+parser.add_argument('-i', "--input",  type=str, dest="ipath", default=DATADIR, help="Input folder")
+parser.add_argument('-o', "--output", type=str, dest="opath", default=PLOTDIR, help="Output folder")
 
 args = parser.parse_args()
 ################################################################################
@@ -42,4 +43,4 @@ for prod in H_prod_list:
 for prod in Z_prod_list:
     for meson in M_meson_list:
         sys.stdout.write("Processing: P=" + BOLD + RED + prod + RESET + " M=" + BOLD + RED + meson + RESET + "\n")
-        os.system("python plot_channel.py -b -s H -p " + prod + " -m " + meson + " -i " + INPUT_PATH + " -o " + OUTPUT_PATH)
+        os.system("python plot_channel.py -b -s Z -p " + prod + " -m " + meson + " -i " + INPUT_PATH + " -o " + OUTPUT_PATH)
