@@ -38,4 +38,4 @@ define vl~ = ve~ vm~ vt~
 import model jpsi_sm
 generate p p > b b~ h $$ u c d s b t u~ c~ d~ s~ b~ t~ g / u c d s t u\
 ~ c~ d~ s~ t~ g, (h > jpsi a, jpsi > mu+ mu-)
-output bbH_HToJPsiG_JPsiToMuMu -nojpeg
+output bbH_HToPsiPrimeG_PsiPrimeToMuMu -nojpeg

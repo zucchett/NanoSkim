@@ -4,7 +4,7 @@ import os
 
 
 # CMSSW directory that is used in the ntuple production
-CMSSWDIR  = os.getenv("CMSSW_BASE") + "/src"
+# CMSSWDIR  = os.getenv("CMSSW_BASE") + "/src"
 
 # directory with the .root files with MC events
 DATADIR   = "/lustre/cmswork/ardino/MG5_data"

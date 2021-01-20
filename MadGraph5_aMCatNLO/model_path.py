@@ -21,7 +21,7 @@ args = parser.parse_args()
 def replace_path(file, token, path):
     for line in fileinput.input(file, inplace=1):
         if token in line:
-            line = "import model " + path + "JPsi_UFO_with_Z__hgg_plugin\n"
+            line = "import model " + path + "jpsi_sm\n"
         sys.stdout.write(line)
 
 
@@ -38,4 +38,4 @@ else:
 for dir in os.listdir(CARDS_PATH):
     file = "./cards/" + dir + "/" + dir + "_proc_card.dat"
     sys.stdout.write("./cards/" + dir + "/" + dir + "_proc_card.dat" + "\n")
-    replace_path(file, "JPsi_UFO_with_Z__hgg_plugin", MODEL_PATH)
+    replace_path(file, "jpsi_sm", MODEL_PATH)

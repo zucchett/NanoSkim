@@ -31,7 +31,7 @@ REVERSE = "\033[;7m"
 INPUT_PATH  = args.ipath + "/" # safer to add "/" at the end
 OUTPUT_PATH = args.opath + "/" # safer to add "/" at the end
 
-H_prod_list  = ["ggH", "VBF", "WH", "ZH", "ttH", "bbH"]
+H_prod_list  = ["GluGluToH", "VBFToH", "WH", "ZH", "ttH", "bbH"]
 Z_prod_list  = ["qqZ"]
 M_meson_list = ["JPsi", "PsiPrime"]
 

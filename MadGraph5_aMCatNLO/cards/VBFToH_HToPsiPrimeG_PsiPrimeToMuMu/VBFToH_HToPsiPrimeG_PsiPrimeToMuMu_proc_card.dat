@@ -36,6 +36,8 @@ define l- = e- mu-
 define vl = ve vm vt
 define vl~ = ve~ vm~ vt~
 import model jpsi_sm
-generate p p > b b~ h $$ u c d s b t u~ c~ d~ s~ b~ t~ g / u c d s t u\
-~ c~ d~ s~ t~ g, (h > jpsi a, jpsi > mu+ mu-)
-output bbH_HToJPsiG_JPsiToMuMu -nojpeg
+define p = u c d s u~ c~ d~ s~
+generate p p > h p p $$ z / a p g h w+ w-, (h > jpsi a, jpsi > mu+ mu-)
+add process p p > h p p $$ w+ w- / a p g h z, (h > jpsi a, jpsi > mu+ mu\
+-)
+output VBFToH_HToPsiPrimeG_PsiPrimeToMuMu -nojpeg

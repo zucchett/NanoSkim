@@ -47,7 +47,7 @@ m_max = {"Z": 110.0, "H": 125.05, "JPsi": 3.099, "PsiPrime": 3.688}
 # useful lists with signal and production modes
 p_ids  = {"Z": 23, "H": 25}
 M_root = {"JPsi": "J/#Psi", "PsiPrime": "#Psi(2S)"}
-P_list = ["ggH", "VBF", "WH", "ZH", "ttH", "bbH", "qqZ"]
+P_list = ["GluGluToH", "VBFToH", "WH", "ZH", "ttH", "bbH", "qqZ"]
 S_list = ["Z", "H"]
 M_list = ["JPsi", "PsiPrime"]
 
@@ -86,7 +86,10 @@ if BATCH_MODE:
 # COMPUTE QUANTITIES OF INTEREST EVENT PER EVENT
 ################################################################################
 # open file
-file = TFile.Open(INPUT_PATH + S + "To" + M + "G_ToMuMuG_" + P + ".root")
+if S=="H":
+    file = TFile.Open(INPUT_PATH + P + "_" + S + "To" + M + "G_" + M + "ToMuMu" + ".root")
+else:
+    file = TFile.Open(INPUT_PATH +           S + "To" + M + "G_" + M + "ToMuMu" + ".root")
 
 # read branches using TTreeReader and TTreeReaderArray
 rLHE  = TTreeReader("LHEF", file)
@@ -214,7 +217,10 @@ COS_THETA_1_MU_P_STR = "cos(#theta_{" + M_root[M] + ",#mu^{#scale[1.5]{+}}})"
 COS_THETA_1_MU_M_STR = "cos(#theta_{" + M_root[M] + ",#mu^{#scale[1.5]{-}}})"
 M_MUMU_STR           = "m_{#mu#mu}"
 M_MUMUGAMMA_STR      = "m_{#mu#mu#gamma}"
-PROC_ID              = S + "To" + M + "G_ToMuMuG_" + P
+if S=="H":
+    PROC_ID = P + "_" + S + "To" + M + "G_" + M + "ToMuMu"
+else:
+    PROC_ID =           S + "To" + M + "G_" + M + "ToMuMu"
 
 h1 = TH1D("h1", "#bf{" + PROC_ID + "}: " + COS_THETA_STAR_STR   + " distribution", nbins, c_min, c_max);
 h2 = TH1D("h2", "#bf{" + PROC_ID + "}: " + COS_THETA_1_MU_P_STR + " distribution", nbins, c_min, c_max);
@@ -239,7 +245,7 @@ y_max_5 = h5.GetMaximum() / (h5.GetBinWidth(1) * h5.Integral())
 
 # create directories for plots
 SAVE_PATH_S    = OUTPUT_PATH + "plots/"
-SAVE_PATH_SMP  = OUTPUT_PATH + "plots/" + S + "To" + M + "G_ToMuMuG_" + P + "/"
+SAVE_PATH_SMP  = OUTPUT_PATH + "plots/" + PROC_ID + "/"
 if not os.path.isdir(SAVE_PATH_S):
     os.system("mkdir " + SAVE_PATH_S)
 if not os.path.isdir(SAVE_PATH_SMP):
